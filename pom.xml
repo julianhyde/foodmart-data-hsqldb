@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to you under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>net.hydromatic</groupId>
+    <artifactId>parent</artifactId>
+    <version>0.1</version>
+  </parent>
+
+  <artifactId>foodmart-data-hsqldb</artifactId>
+  <version>0.3-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>foodmart-data-hsqldb</name>
+  <description>Foodmart data set in hsqldb format</description>
+  <url>http://github.com/julianhyde/foodmart-data-hsqldb</url>
+  <inceptionYear>2015</inceptionYear>
+  <organization>
+    <name>Julian Hyde</name>
+    <url>http://www.hydromatic.net</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>julianhyde</id>
+      <name>Julian Hyde</name>
+      <email>jhyde@apache.org</email>
+      <url>https://github.com/julianhyde</url>
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+      <timezone>-8</timezone>
+      <properties />
+    </developer>
+  </developers>
+
+  <mailingLists>
+    <mailingList>
+      <name>Apache Calcite developers list</name>
+      <subscribe>dev-subscribe@calcite.incubator.apache.org</subscribe>
+      <unsubscribe>dev-unsubscribe@calcite.incubator.apache.org</unsubscribe>
+      <post>dev@calcite.incubator.apache.org</post>
+      <archive>http://mail-archives.apache.org/mod_mbox/incubator-calcite-dev</archive>
+    </mailingList>
+  </mailingLists>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <top.dir>${project.basedir}</top.dir>
+  </properties>
+
+  <!-- Environment settings. -->
+  <distributionManagement>
+    <site>
+      <id>foodmart-data-hsqldb.website</id>
+      <name>Foodmart data for hsqldb Website</name>
+      <url>file:/home/jhyde/web2/foodmart-data-hsqldb</url>
+    </site>
+  </distributionManagement>
+
+  <issueManagement>
+    <system>github</system>
+    <url>https://github.com/julianhyde/foodmart-data-hsqldb/issues</url>
+  </issueManagement>
+
+  <scm>
+    <connection>scm:git:git://github.com/julianhyde/foodmart-data-hsqldb.git</connection>
+    <developerConnection>scm:git:git@github.com:julianhyde/foodmart-data-hsqldb.git</developerConnection>
+    <url>scm:git:git://github.com/julianhyde/foodmart-data-hsqldb.git</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <prerequisites>
+    <maven>3.2.1</maven><!-- prerequisite of some plugins -->
+  </prerequisites>
+
+  <build>
+    <!-- See parent POM -->
+    <pluginManagement />
+
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <!-- Make sure every sub-project has LICENSE, NOTICE and
+             git.properties in its jar's META-INF directory. -->
+        <executions>
+          <execution>
+            <id>add-resource</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>add-resource</goal>
+              <goal>add-test-resource</goal>
+            </goals>
+            <configuration>
+              <resources>
+                <resource>
+                  <directory>${top.dir}</directory>
+                  <targetPath>META-INF</targetPath>
+                  <includes>
+                    <include>LICENSE</include>
+                    <include>NOTICE</include>
+                  </includes>
+                </resource>
+                <resource>
+                  <directory>${top.dir}/target</directory>
+                  <targetPath>META-INF</targetPath>
+                  <includes>
+                    <include>git.properties</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>pl.project13.maven</groupId>
+        <artifactId>git-commit-id-plugin</artifactId>
+        <inherited>false</inherited>
+        <executions>
+          <execution>
+            <goals>
+              <goal>revision</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <dateFormat>yyyy-MM-dd'T'HH:mm:ssZ</dateFormat>
+          <verbose>false</verbose>
+          <skipPoms>false</skipPoms>
+          <generateGitPropertiesFile>true</generateGitPropertiesFile>
+          <generateGitPropertiesFilename>target/git.properties</generateGitPropertiesFilename>
+          <failOnNoGitDirectory>false</failOnNoGitDirectory>
+          <gitDescribe>
+            <skip>false</skip>
+            <always>false</always>
+            <abbrev>7</abbrev>
+            <dirty>-dirty</dirty>
+            <forceLongFormat>true</forceLongFormat>
+          </gitDescribe>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

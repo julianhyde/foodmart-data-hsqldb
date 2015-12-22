@@ -17,7 +17,7 @@ Foodmart contains 37 tables:
 
 Its size is about 24MB uncompressed, 8MB compressed.
 
-Here is a schema diagram: 
+Here is a schema diagram:
 
 ![Foodmart schema diagram](http://rz250.wwwdns.rz.uni-konstanz.de/teaching/ws0607/information-systems/materials/foodmart.jpg)
 
@@ -71,7 +71,30 @@ sqlline> !connect jdbc:hsqldb:res:foodmart sa ""
 0: jdbc:hsqldb:res:foodmart> !quit
 ```
 
-# See also
+## Get foodmart-data-hsqldb
+
+### From Maven
+
+Get foodmart-data-hsqldb from
+<a href="https://search.maven.org/#search%7Cga%7C1%7Cg%3Anet.hydromatic%20a%3Afoodmart-data-hsqldb">Maven Central</a>:
+
+```xml
+<dependency>
+  <groupId>net.hydromatic</groupId>
+  <artifactId>foodmart-data-hsqldb</artifactId>
+  <version>0.3</version>
+</dependency>
+```
+
+### Download and build
+
+```bash
+$ git clone git://github.com/julianhyde/foodmart-data-hsqldb.git
+$ cd foodmart-data-hsqldb
+$ mvn install
+```
+
+## See also
 
 Similar data sets:
 * [foodmart-data-json](https://github.com/julianhyde/foodmart-data-json)
@@ -86,8 +109,8 @@ Similar data sets:
 * Project page: http://www.hydromatic.net/foodmart-data-hsqldb
 * Source code: http://github.com/julianhyde/foodmart-data-hsqldb
 * Developers list:
-  <a href="mailto:dev@calcite.incubator.apache.org">dev at calcite.incubator.apache.org</a>
-  (<a href="http://mail-archives.apache.org/mod_mbox/incubator-calcite-dev/">archive</a>,
-  <a href="mailto:dev-subscribe@calcite.incubator.apache.org">subscribe</a>)
+  <a href="mailto:dev@calcite.apache.org">dev at calcite.apache.org</a>
+  (<a href="http://mail-archives.apache.org/mod_mbox/calcite-dev/">archive</a>,
+  <a href="mailto:dev-subscribe@calcite.apache.org">subscribe</a>)
 * Issues: https://github.com/julianhyde/foodmart-data-hsqldb/issues
 * <a href="HISTORY.md">Release notes and history</a>

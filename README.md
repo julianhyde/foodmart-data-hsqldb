@@ -32,7 +32,7 @@ add the artifact to your project's dependencies:
 <dependency>
   <groupId>net.hydromatic</groupId>
   <artifactId>foodmart-data-hsqldb</artifactId>
-  <version>0.3</version>
+  <version>0.4</version>
 </dependency>
 ```
 
@@ -82,7 +82,7 @@ Get foodmart-data-hsqldb from
 <dependency>
   <groupId>net.hydromatic</groupId>
   <artifactId>foodmart-data-hsqldb</artifactId>
-  <version>0.3</version>
+  <version>0.4</version>
 </dependency>
 ```
 
@@ -94,10 +94,15 @@ $ cd foodmart-data-hsqldb
 $ mvn install
 ```
 
+### Make a release
+
+See [hydromatic-parent](https://github.com/julianhyde/hydromatic-parent).
+
 ## See also
 
 Similar data sets:
 * [foodmart-data-json](https://github.com/julianhyde/foodmart-data-json)
+* [foodmart-data-mysql](https://github.com/julianhyde/foodmart-data-mysql)
 * [scott-data-hsqldb](https://github.com/julianhyde/scott-data-hsqldb)
 * [foodmart-queries](https://github.com/julianhyde/foodmart-queries)
 

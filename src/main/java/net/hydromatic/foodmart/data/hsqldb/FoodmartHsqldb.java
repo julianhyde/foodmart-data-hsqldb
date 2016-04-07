@@ -20,6 +20,8 @@ package net.hydromatic.foodmart.data.hsqldb;
 public class FoodmartHsqldb {
   /** URI of the hsqldb database. */
   public static final String URI = "jdbc:hsqldb:res:foodmart";
+  public static final String USER = "FOODMART";
+  public static final String PASSWORD = "FOODMART";
 }
 
 // End FoodmartHsqldb.java

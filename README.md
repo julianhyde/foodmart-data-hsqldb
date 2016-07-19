@@ -19,7 +19,7 @@ Its size is about 24MB uncompressed, 8MB compressed.
 
 Here is a schema diagram:
 
-![Foodmart schema diagram](http://rz250.wwwdns.rz.uni-konstanz.de/teaching/ws0607/information-systems/materials/foodmart.jpg)
+![Foodmart schema diagram](foodmart-schema.png)
 
 # Using the data set
 

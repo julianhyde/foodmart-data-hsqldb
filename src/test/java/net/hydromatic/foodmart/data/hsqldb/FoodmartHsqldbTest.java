@@ -45,7 +45,7 @@ public class FoodmartHsqldbTest {
     final int columnCount = metaData.getColumnCount();
     int row = 0;
     while (resultSet.next()) {
-      if (row++ > printLimit) {
+      if (row++ >= printLimit && printLimit >= 0) {
         continue;
       }
       for (int i = 0; i < columnCount; i++) {

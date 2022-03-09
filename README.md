@@ -60,7 +60,7 @@ add the artifact to your project's dependencies:
   <dependency>
     <groupId>net.hydromatic</groupId>
     <artifactId>foodmart-data-hsqldb</artifactId>
-    <version>0.4</version>
+    <version>0.5</version>
   </dependency>
 </dependencies>
 ```
@@ -120,7 +120,7 @@ Get foodmart-data-hsqldb from
 <dependency>
   <groupId>net.hydromatic</groupId>
   <artifactId>foodmart-data-hsqldb</artifactId>
-  <version>0.4</version>
+  <version>0.5</version>
 </dependency>
 ```
 

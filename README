@@ -1,0 +1,14 @@
+foodmart-data-hsqldb release 0.2
+
+This is a source or binary distribution of foodmart-data-hsqldb.
+
+Changes since the previous release are described in the
+HISTORY.md file.
+
+The LICENSE and NOTICE files contain license information.
+
+If this is a source distribution, you can find instructions how to
+build the release in the "Download and build" section in README.md.
+
+Further information about foodmart-data-hsqldb is available at its web
+site, https://github.com/julianhyde/foodmart-data-hsqldb.

@@ -26,7 +26,7 @@ jobs:
     strategy:
       matrix:
         java-version: [ "8", "11", "17" ]
-        hsqldb-version: [ "2.2.4", "2.3.1" ]
+        hsqldb-version: [ "2.2.4", "2.3.1", "2.5.1", "2.6.1" ]
         javadoc: [ false ]
         exclude:
           # hsqldb >= 2.6 requires JRE >= 11
@@ -34,7 +34,7 @@ jobs:
             hsqldb-version: "2.6.1"
         include:
           - java-version: "17"
-            hsqldb-version: "2.3.1"
+            hsqldb-version: "2.6.1"
             javadoc: true
 
     steps:

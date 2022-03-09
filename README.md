@@ -51,23 +51,39 @@ as a Maven artifact. To use the data in your Java application,
 add the artifact to your project's dependencies:
 
 ```xml
-<dependency>
-  <groupId>net.hydromatic</groupId>
-  <artifactId>foodmart-data-hsqldb</artifactId>
-  <version>0.4</version>
-</dependency>
+<dependencies>
+  <dependency>
+    <groupId>org.hsqldb</groupId>
+    <artifactId>hsqldb</artifactId>
+    <version>2.5.1</version>
+  </dependency>
+  <dependency>
+    <groupId>net.hydromatic</groupId>
+    <artifactId>foodmart-data-hsqldb</artifactId>
+    <version>0.4</version>
+  </dependency>
+</dependencies>
 ```
+
+(foodmart-data-hsqldb requires Java 8 or higher, and HSQLDB 2.0.0 or higher;
+Java 11
+<a href="http://hsqldb.org/doc/2.0/changelist_2_0.txt">is required</a>
+for HSQLDB 2.6.0 and higher.)
 
 Now you can connect using Java code:
 
 ```java
 import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
 
-Connection connection = DriverManager.getConnection("jdbc:hsqldb:res:foodmart");
+Connection connection =
+    DriverManager.getConnection("jdbc:hsqldb:res:foodmart",
+        "FOODMART", "FOODMART");
 Statement statement = connection.createStatement();
 ResultSet resultSet =
-  statement.executeQuery("select \"employee_id\", \"full_name\"\n"
-      + "from \"foodmart\".\"employee\");
+    statement.executeQuery("select \"employee_id\", \"full_name\"\n"
+        + "from \"foodmart\".\"employee\"");
 while (resultSet.next()) {
   System.out.println(resultSet.getInt(1) + ":" + resultSet.getString(2));
 }

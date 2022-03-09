@@ -5,7 +5,7 @@ This project contains the FoodMart data set as an embedded
 HSQLDB database.
 
 It originated as part of the test suite of the
-<a href="http://mondrian.pentaho.org">Pentaho Mondrian OLAP engine</a>.
+<a href="https://mondrian.pentaho.org">Pentaho Mondrian OLAP engine</a>.
 
 # Schema
 
@@ -59,7 +59,7 @@ Make sure that `foodmart-data-hsqldb.jar` is on the class path, and start `sqlli
 
 ```sql
 $ ./sqlline
-sqlline version 1.1.9
+sqlline version 1.12.0
 sqlline> !connect jdbc:hsqldb:res:foodmart sa ""
 0: jdbc:hsqldb:res:foodmart> select count(*) from "foodmart"."sales_fact_1997";
 +----------------------+
@@ -88,10 +88,18 @@ Get foodmart-data-hsqldb from
 
 ### Download and build
 
+Java version 11 or higher.
+
 ```bash
 $ git clone git://github.com/julianhyde/foodmart-data-hsqldb.git
 $ cd foodmart-data-hsqldb
-$ mvn install
+$ ./mvnw install
+```
+
+On Windows, the last line is
+
+```bash
+> mvnw install
 ```
 
 ### Make a release
@@ -101,21 +109,24 @@ See [hydromatic-parent](https://github.com/julianhyde/hydromatic-parent).
 ## See also
 
 Similar data sets:
+* [chinook-data-hsqldb](https://github.com/julianhyde/chinook-data-hsqldb)
+* [flight-data-hsqldb](https://github.com/julianhyde/flight-data-hsqldb)
 * [foodmart-data-json](https://github.com/julianhyde/foodmart-data-json)
 * [foodmart-data-mysql](https://github.com/julianhyde/foodmart-data-mysql)
-* [scott-data-hsqldb](https://github.com/julianhyde/scott-data-hsqldb)
 * [foodmart-queries](https://github.com/julianhyde/foodmart-queries)
+* [scott-data-hsqldb](https://github.com/julianhyde/scott-data-hsqldb)
+* [steelwheels-data-hsqldb](https://github.com/julianhyde/steelwheels-data-hsqldb)
 
 ## More information
 
 * License: Apache License, Version 2.0
 * Author: Julian Hyde
-* Blog: http://julianhyde.blogspot.com
+* Blog: https://blog.hydromatic.net
 * Project page: http://www.hydromatic.net/foodmart-data-hsqldb
-* Source code: http://github.com/julianhyde/foodmart-data-hsqldb
+* Source code: https://github.com/julianhyde/foodmart-data-hsqldb
 * Developers list:
   <a href="mailto:dev@calcite.apache.org">dev at calcite.apache.org</a>
-  (<a href="http://mail-archives.apache.org/mod_mbox/calcite-dev/">archive</a>,
+  (<a href="https://mail-archives.apache.org/mod_mbox/calcite-dev/">archive</a>,
   <a href="mailto:dev-subscribe@calcite.apache.org">subscribe</a>)
 * Issues: https://github.com/julianhyde/foodmart-data-hsqldb/issues
 * <a href="HISTORY.md">Release notes and history</a>

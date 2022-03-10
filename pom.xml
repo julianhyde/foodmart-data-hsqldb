@@ -78,7 +78,7 @@ limitations under the License.
     <!-- We support HSQLDB versions 2.0.0 through 2.6.1;
          2.5.1 is the default because it is the highest version
          compatible with JDK 8; 2.6.0 and higher requires JDK 11. -->
-    <hsqldb.version>2.5.1</hsqldb.version>
+    <hsqldb.version>2.6.1</hsqldb.version>
     <junit.version>4.13.2</junit.version>
   </properties>
 

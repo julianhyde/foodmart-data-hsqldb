@@ -17,7 +17,15 @@
 #
 name: Java CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - '*'
+  workflow_dispatch: # allow manual triggering
+  schedule:
+    # Run at 01:45 UTC on the 7th day of each month
+    #         m  h dom mon dow
+    - cron: '45  1   7   *   *'
 
 jobs:
   build:

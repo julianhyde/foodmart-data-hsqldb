@@ -19,6 +19,7 @@ License.
 {% endcomment %}
 -->
 [![Build Status](https://github.com/julianhyde/foodmart-data-hsqldb/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/julianhyde/foodmart-data-hsqldb/actions?query=branch%3Amain)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.hydromatic/foodmart-data-hsqldb/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.hydromatic/foodmart-data-hsqldb)
 
 # foodmart-data-hsqldb
 Foodmart data set in hsqldb format

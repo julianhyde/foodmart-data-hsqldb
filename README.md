@@ -113,7 +113,7 @@ Get foodmart-data-hsqldb from
 <dependency>
   <groupId>net.hydromatic</groupId>
   <artifactId>foodmart-data-hsqldb</artifactId>
-  <version>0.6</version>
+  <version>0.6.1</version>
 </dependency>
 ```
 

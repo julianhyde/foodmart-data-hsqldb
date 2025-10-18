@@ -1,0 +1,12 @@
+account_id,account_parent,account_description,account_type,account_rollup,Custom_Members
+1000,,Assets,Asset,~,
+2000,,Liabilities,Liability,~,
+3000,5000,Net Sales,Income,+,
+3100,3000,Gross Sales,Income,+,"LookUpCube(""[Sales]"",""(Measures.[Store Sales],""+time.currentmember.UniqueName+"",""+ Store.currentmember.UniqueName+"")"")"
+3200,3000,Cost of Goods Sold,Income,-,
+4000,5000,Total Expense,Expense,-,
+4100,4000,General & Administration,Expense,+,
+4200,4000,Information Systems,Expense,+,
+4300,4000,Marketing,Expense,+,
+4400,4000,Lease,Expense,+,
+5000,,Net Income,Income,+,

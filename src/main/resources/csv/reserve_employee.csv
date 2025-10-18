@@ -1,0 +1,144 @@
+employee_id,full_name,first_name,last_name,position_id,position_title,store_id,department_id,birth_date,hire_date,end_date,salary,supervisor_id,education_level,marital_status,gender
+1157,Maryann Backlin,Maryann,Backlin,,,0,0,1946-08-15 00:00:00.0,,,0.0000,0,Graduate Degree,S,M
+1158,Kevin Sharp,Kevin,Sharp,,,0,0,1912-04-06 00:00:00.0,,,0.0000,0,Graduate Degree,S,M
+1159,Michael Torres,Michael,Torres,,,0,0,1951-09-27 00:00:00.0,,,0.0000,0,High School Degree,M,F
+1160,Marian Sall,Marian,Sall,,,0,0,1942-09-21 00:00:00.0,,,0.0000,0,High School Degree,S,F
+1161,Rose Scott,Rose,Scott,,,0,0,1963-03-26 00:00:00.0,,,0.0000,0,Bachelors Degree,M,M
+1162,Elmer Zablah,Elmer,Zablah,,,0,0,1935-08-14 00:00:00.0,,,0.0000,0,High School Degree,S,M
+1163,Rosalie Verity,Rosalie,Verity,,,0,0,1965-03-23 00:00:00.0,,,0.0000,0,Graduate Degree,M,F
+1164,Jim Pope,Jim,Pope,,,0,0,1954-06-08 00:00:00.0,,,0.0000,0,Graduate Degree,S,F
+1165,Barbara Harriman,Barbara,Harriman,,,0,0,1953-04-10 00:00:00.0,,,0.0000,0,Partial College,S,M
+1166,Florence Bowen,Florence,Bowen,,,0,0,1929-07-21 00:00:00.0,,,0.0000,0,Partial College,S,M
+1167,Calvin Pochert,Calvin,Pochert,,,0,0,1926-08-24 00:00:00.0,,,0.0000,0,Bachelors Degree,S,M
+1168,Cecil Stone,Cecil,Stone,,,0,0,1938-08-22 00:00:00.0,,,0.0000,0,Partial College,M,F
+1169,Raymond Lippman,Raymond,Lippman,,,0,0,1976-06-27 00:00:00.0,,,0.0000,0,Partial College,M,M
+1170,Brian Heiser,Brian,Heiser,,,0,0,1957-08-08 00:00:00.0,,,0.0000,0,Graduate Degree,M,F
+1171,Brad Craig,Brad,Craig,,,0,0,1926-09-28 00:00:00.0,,,0.0000,0,Bachelors Degree,S,F
+1172,Donny Castano,Donny,Castano,,,0,0,1938-12-17 00:00:00.0,,,0.0000,0,Bachelors Degree,M,M
+1173,Edgar Caudill,Edgar,Caudill,,,0,0,1948-11-20 00:00:00.0,,,0.0000,0,Partial College,M,M
+1174,Barbara Romero,Barbara,Romero,,,0,0,1946-04-09 00:00:00.0,,,0.0000,0,Partial College,M,M
+1175,Sarah Hicks,Sarah,Hicks,,,0,0,1959-08-11 00:00:00.0,,,0.0000,0,High School Degree,M,F
+1176,Robert Difatta,Robert,Difatta,,,0,0,1912-05-02 00:00:00.0,,,0.0000,0,Partial High School,M,F
+1177,Marilyn Schaidt,Marilyn,Schaidt,,,0,0,1966-07-04 00:00:00.0,,,0.0000,0,Partial College,S,F
+1178,Susan Brush,Susan,Brush,,,0,0,1951-11-03 00:00:00.0,,,0.0000,0,Partial High School,S,M
+1179,Michelle Cambra,Michelle,Cambra,,,0,0,1931-10-26 00:00:00.0,,,0.0000,0,Partial College,S,F
+1180,Doris Mills,Doris,Mills,,,0,0,1964-01-19 00:00:00.0,,,0.0000,0,High School Degree,M,M
+1181,Mai Reed,Mai,Reed,,,0,0,1921-05-21 00:00:00.0,,,0.0000,0,Partial College,S,M
+1182,Gail Rybolt,Gail,Rybolt,,,0,0,1941-08-14 00:00:00.0,,,0.0000,0,Partial High School,S,M
+1183,Carolyn Staton,Carolyn,Staton,,,0,0,1970-05-14 00:00:00.0,,,0.0000,0,High School Degree,S,M
+1184,Albert Van Antwerp,Albert,Van Antwerp,,,0,0,1945-02-09 00:00:00.0,,,0.0000,0,Bachelors Degree,S,M
+1185,Mimi Springer,Mimi,Springer,,,0,0,1944-07-11 00:00:00.0,,,0.0000,0,Partial College,S,M
+1186,Barbara Thorne,Barbara,Thorne,,,0,0,1969-08-27 00:00:00.0,,,0.0000,0,High School Degree,S,F
+1187,Susan Surniak,Susan,Surniak,,,0,0,1977-04-05 00:00:00.0,,,0.0000,0,High School Degree,M,M
+1188,Marilyn Short,Marilyn,Short,,,0,0,1951-02-19 00:00:00.0,,,0.0000,0,Bachelors Degree,M,M
+1189,Richard Swesey,Richard,Swesey,,,0,0,1923-10-19 00:00:00.0,,,0.0000,0,High School Degree,M,M
+1190,Carolyn Carlson,Carolyn,Carlson,,,0,0,1965-01-16 00:00:00.0,,,0.0000,0,Graduate Degree,M,F
+1191,Christy Margolis,Christy,Margolis,,,0,0,1956-07-23 00:00:00.0,,,0.0000,0,Partial College,M,M
+1192,Kelly Bowen,Kelly,Bowen,,,0,0,1941-12-11 00:00:00.0,,,0.0000,0,Partial High School,M,M
+1193,Esther Murphy,Esther,Murphy,,,0,0,1957-10-11 00:00:00.0,,,0.0000,0,Partial High School,S,F
+1194,Tiffany Miller,Tiffany,Miller,,,0,0,1934-11-05 00:00:00.0,,,0.0000,0,Graduate Degree,S,F
+1195,William Abravaya,William,Abravaya,,,0,0,1958-10-09 00:00:00.0,,,0.0000,0,Partial High School,S,F
+1196,Margaret Hazlip,Margaret,Hazlip,,,0,0,1953-08-26 00:00:00.0,,,0.0000,0,High School Degree,M,M
+1197,Linda Carter,Linda,Carter,,,0,0,1912-08-28 00:00:00.0,,,0.0000,0,Partial High School,S,M
+1198,Frank Slusher,Frank,Slusher,,,0,0,1964-08-18 00:00:00.0,,,0.0000,0,Bachelors Degree,M,M
+1199,Janelle Nzwonkwelle,Janelle,Nzwonkwelle,,,0,0,1967-04-27 00:00:00.0,,,0.0000,0,Bachelors Degree,S,F
+1200,Linda McCain,Linda,McCain,,,0,0,1974-08-19 00:00:00.0,,,0.0000,0,Bachelors Degree,S,F
+1201,Juanita Daly,Juanita,Daly,,,0,0,1935-10-18 00:00:00.0,,,0.0000,0,High School Degree,M,M
+1202,Nancy LaTulippe,Nancy,LaTulippe,,,0,0,1922-08-04 00:00:00.0,,,0.0000,0,Partial High School,M,M
+1203,Saje Lewis,Saje,Lewis,,,0,0,1924-08-25 00:00:00.0,,,0.0000,0,Bachelors Degree,S,M
+1204,Herbert Bomar,Herbert,Bomar,,,0,0,1930-03-08 00:00:00.0,,,0.0000,0,Graduate Degree,M,F
+1205,Darlene Renfro,Darlene,Renfro,,,0,0,1946-10-17 00:00:00.0,,,0.0000,0,Partial College,M,F
+1206,Maria Wheeler,Maria,Wheeler,,,0,0,1938-06-28 00:00:00.0,,,0.0000,0,Graduate Degree,S,F
+1207,Tony Irvin,Tony,Irvin,,,0,0,1957-07-08 00:00:00.0,,,0.0000,0,Graduate Degree,S,M
+1208,Stephen Green,Stephen,Green,,,0,0,1974-07-20 00:00:00.0,,,0.0000,0,High School Degree,S,F
+1209,Virginia Stanford,Virginia,Stanford,,,0,0,1963-05-02 00:00:00.0,,,0.0000,0,Partial High School,S,M
+1210,Michael Ritchie,Michael,Ritchie,,,0,0,1973-02-19 00:00:00.0,,,0.0000,0,Bachelors Degree,S,M
+1211,Hiram Moody,Hiram,Moody,,,0,0,1958-09-20 00:00:00.0,,,0.0000,0,Bachelors Degree,M,M
+1212,William Whatley,William,Whatley,,,0,0,1916-04-08 00:00:00.0,,,0.0000,0,Graduate Degree,S,M
+1213,Maria Schloss,Maria,Schloss,,,0,0,1919-03-18 00:00:00.0,,,0.0000,0,Bachelors Degree,M,F
+1214,Alice Hurt,Alice,Hurt,,,0,0,1933-10-05 00:00:00.0,,,0.0000,0,High School Degree,M,M
+1215,Harold Erickson,Harold,Erickson,,,0,0,1968-04-11 00:00:00.0,,,0.0000,0,Graduate Degree,M,M
+1216,Arthur Haas,Arthur,Haas,,,0,0,1936-04-01 00:00:00.0,,,0.0000,0,Partial High School,M,M
+1217,Manuel Haskin,Manuel,Haskin,,,0,0,1930-03-24 00:00:00.0,,,0.0000,0,High School Degree,M,F
+1218,Tamar Hubbard,Tamar,Hubbard,,,0,0,1961-11-19 00:00:00.0,,,0.0000,0,Graduate Degree,M,M
+1219,Eric Comden,Eric,Comden,,,0,0,1963-10-18 00:00:00.0,,,0.0000,0,Partial High School,M,F
+1220,Stephanie Dummy,Stephanie,Dummy,,,0,0,1943-05-10 00:00:00.0,,,0.0000,0,High School Degree,S,F
+1221,Py Bateman,Py,Bateman,,,0,0,1921-08-16 00:00:00.0,,,0.0000,0,Graduate Degree,M,F
+1222,Ruth Vigil,Ruth,Vigil,,,0,0,1957-04-08 00:00:00.0,,,0.0000,0,Partial College,S,M
+1223,Hector Clifford,Hector,Clifford,,,0,0,1954-06-20 00:00:00.0,,,0.0000,0,Bachelors Degree,S,M
+1224,Shirley Turner,Shirley,Turner,,,0,0,1933-03-03 00:00:00.0,,,0.0000,0,Bachelors Degree,S,M
+1225,Barbara Appel,Barbara,Appel,,,0,0,1954-08-08 00:00:00.0,,,0.0000,0,High School Degree,S,F
+1226,James Vance,James,Vance,,,0,0,1926-02-23 00:00:00.0,,,0.0000,0,Bachelors Degree,M,F
+1227,Michael Olbright,Michael,Olbright,,,0,0,1956-08-06 00:00:00.0,,,0.0000,0,Partial College,S,M
+1228,Tamara Dowd,Tamara,Dowd,,,0,0,1945-11-18 00:00:00.0,,,0.0000,0,Partial College,M,M
+1229,Garth Wagner,Garth,Wagner,,,0,0,1940-07-22 00:00:00.0,,,0.0000,0,Graduate Degree,M,M
+1230,Brian Merlo,Brian,Merlo,,,0,0,1928-02-18 00:00:00.0,,,0.0000,0,Graduate Degree,M,F
+1231,Tammy Kamp,Tammy,Kamp,,,0,0,1925-03-21 00:00:00.0,,,0.0000,0,High School Degree,S,F
+1232,Debra Hamrick,Debra,Hamrick,,,0,0,1925-11-08 00:00:00.0,,,0.0000,0,Partial College,S,M
+1233,Janet Bogosian,Janet,Bogosian,,,0,0,1963-09-12 00:00:00.0,,,0.0000,0,High School Degree,S,M
+1234,Linda Chavira,Linda,Chavira,,,0,0,1956-03-04 00:00:00.0,,,0.0000,0,Bachelors Degree,M,F
+1235,Martha Clark,Martha,Clark,,,0,0,1920-09-01 00:00:00.0,,,0.0000,0,Graduate Degree,S,M
+1236,Marceline Vialpando,Marceline,Vialpando,,,0,0,1972-11-20 00:00:00.0,,,0.0000,0,Bachelors Degree,M,M
+1237,Luis Clay,Luis,Clay,,,0,0,1912-11-23 00:00:00.0,,,0.0000,0,Bachelors Degree,S,M
+1238,Odin Stumpff,Odin,Stumpff,,,0,0,1910-03-12 00:00:00.0,,,0.0000,0,Bachelors Degree,M,M
+1239,Leeann Masser,Leeann,Masser,,,0,0,1923-08-14 00:00:00.0,,,0.0000,0,Partial College,S,M
+1240,Raymond Sparks,Raymond,Sparks,,,0,0,1946-05-05 00:00:00.0,,,0.0000,0,High School Degree,M,F
+1241,Charles Martinez,Charles,Martinez,,,0,0,1929-06-08 00:00:00.0,,,0.0000,0,High School Degree,S,M
+1242,Charles Williams,Charles,Williams,,,0,0,1961-05-11 00:00:00.0,,,0.0000,0,Partial College,M,F
+1243,Lea Nelson,Lea,Nelson,,,0,0,1953-07-18 00:00:00.0,,,0.0000,0,Bachelors Degree,M,F
+1244,Jorge Phillips,Jorge,Phillips,,,0,0,1974-06-27 00:00:00.0,,,0.0000,0,Bachelors Degree,S,F
+1245,Paul Perez,Paul,Perez,,,0,0,1931-10-02 00:00:00.0,,,0.0000,0,Graduate Degree,M,F
+1246,Beverly Verduzco,Beverly,Verduzco,,,0,0,1951-02-22 00:00:00.0,,,0.0000,0,Bachelors Degree,M,F
+1247,Mabel Oreskovich,Mabel,Oreskovich,,,0,0,1980-10-22 00:00:00.0,,,0.0000,0,Graduate Degree,M,F
+1248,Richard Dean,Richard,Dean,,,0,0,1955-07-18 00:00:00.0,,,0.0000,0,High School Degree,M,F
+1249,Kristy Seward,Kristy,Seward,,,0,0,1920-12-22 00:00:00.0,,,0.0000,0,Partial High School,S,F
+1250,Joseph Schofield,Joseph,Schofield,,,0,0,1946-02-11 00:00:00.0,,,0.0000,0,High School Degree,M,M
+1251,Jill Shopneck,Jill,Shopneck,,,0,0,1953-08-17 00:00:00.0,,,0.0000,0,High School Degree,M,M
+1252,Janice Nelson,Janice,Nelson,,,0,0,1927-07-03 00:00:00.0,,,0.0000,0,Partial College,M,M
+1253,George Trujillo,George,Trujillo,,,0,0,1912-06-14 00:00:00.0,,,0.0000,0,Partial College,M,M
+1254,Angela Hutchinson,Angela,Hutchinson,,,0,0,1942-06-27 00:00:00.0,,,0.0000,0,Partial High School,M,F
+1255,Angela Jiminez,Angela,Jiminez,,,0,0,1969-10-13 00:00:00.0,,,0.0000,0,Partial College,M,M
+1256,Janice Weakley,Janice,Weakley,,,0,0,1953-03-01 00:00:00.0,,,0.0000,0,High School Degree,M,M
+1257,Barbara Haste,Barbara,Haste,,,0,0,1911-04-12 00:00:00.0,,,0.0000,0,Graduate Degree,M,M
+1258,Mary Lee,Mary,Lee,,,0,0,1946-02-22 00:00:00.0,,,0.0000,0,Partial High School,S,F
+1259,Zelma Pereira,Zelma,Pereira,,,0,0,1970-01-26 00:00:00.0,,,0.0000,0,High School Degree,S,F
+1260,Suzanne Rowland,Suzanne,Rowland,,,0,0,1966-11-16 00:00:00.0,,,0.0000,0,Partial College,S,F
+1261,Carlos Lopez,Carlos,Lopez,,,0,0,1966-03-26 00:00:00.0,,,0.0000,0,Bachelors Degree,M,F
+1262,Eduardo Munoz,Eduardo,Munoz,,,0,0,1952-04-13 00:00:00.0,,,0.0000,0,High School Degree,S,M
+1263,Rick Carpenter,Rick,Carpenter,,,0,0,1943-09-11 00:00:00.0,,,0.0000,0,Graduate Degree,M,F
+1264,Diane Kuhl,Diane,Kuhl,,,0,0,1950-02-03 00:00:00.0,,,0.0000,0,High School Degree,M,M
+1265,Terri Campbell,Terri,Campbell,,,0,0,1911-04-02 00:00:00.0,,,0.0000,0,Bachelors Degree,S,F
+1266,Mouloud Pancoast,Mouloud,Pancoast,,,0,0,1911-05-26 00:00:00.0,,,0.0000,0,Partial College,S,F
+1267,Joan Johnson,Joan,Johnson,,,0,0,1951-07-02 00:00:00.0,,,0.0000,0,Partial High School,M,F
+1268,Karen Caluori,Karen,Caluori,,,0,0,1938-05-26 00:00:00.0,,,0.0000,0,High School Degree,M,F
+1269,Hattie Boyer,Hattie,Boyer,,,0,0,1955-01-08 00:00:00.0,,,0.0000,0,High School Degree,S,M
+1270,Michael Dreiling,Michael,Dreiling,,,0,0,1947-08-18 00:00:00.0,,,0.0000,0,Partial College,S,F
+1271,Jay Bauer,Jay,Bauer,,,0,0,1966-09-25 00:00:00.0,,,0.0000,0,Bachelors Degree,S,M
+1272,Melissa Geha,Melissa,Geha,,,0,0,1925-02-22 00:00:00.0,,,0.0000,0,High School Degree,M,M
+1273,Kim Chan,Kim,Chan,,,0,0,1972-07-19 00:00:00.0,,,0.0000,0,Bachelors Degree,M,M
+1274,Audrey Topping,Audrey,Topping,,,0,0,1911-05-10 00:00:00.0,,,0.0000,0,Partial College,M,M
+1275,Chris Carson,Chris,Carson,,,0,0,1963-11-23 00:00:00.0,,,0.0000,0,Partial College,M,M
+1276,Jeffrey Ferguson,Jeffrey,Ferguson,,,0,0,1920-06-11 00:00:00.0,,,0.0000,0,Partial College,S,M
+1277,Eric Callahan,Eric,Callahan,,,0,0,1953-05-18 00:00:00.0,,,0.0000,0,Partial College,S,F
+1278,Kim Leming,Kim,Leming,,,0,0,1967-01-06 00:00:00.0,,,0.0000,0,Bachelors Degree,M,M
+1279,Jenni Montgomery,Jenni,Montgomery,,,0,0,1932-05-12 00:00:00.0,,,0.0000,0,High School Degree,S,F
+1280,Gerald Koblinski,Gerald,Koblinski,,,0,0,1971-06-01 00:00:00.0,,,0.0000,0,Partial College,M,M
+1281,Frank Bush,Frank,Bush,,,0,0,1970-02-06 00:00:00.0,,,0.0000,0,Partial College,S,F
+1282,Kyle Alarid,Kyle,Alarid,,,0,0,1919-07-17 00:00:00.0,,,0.0000,0,High School Degree,M,F
+1283,Tim Hollingsworth,Tim,Hollingsworth,,,0,0,1933-09-27 00:00:00.0,,,0.0000,0,Partial College,M,M
+1284,Dorothy Carroll,Dorothy,Carroll,,,0,0,1971-01-08 00:00:00.0,,,0.0000,0,Partial College,M,F
+1285,Gladys Wheelersburg,Gladys,Wheelersburg,,,0,0,1949-05-14 00:00:00.0,,,0.0000,0,Bachelors Degree,S,M
+1286,Lynn Norris,Lynn,Norris,,,0,0,1916-11-06 00:00:00.0,,,0.0000,0,Graduate Degree,S,M
+1287,David McCool,David,McCool,,,0,0,1967-08-10 00:00:00.0,,,0.0000,0,Graduate Degree,S,M
+1288,Scott Panton,Scott,Panton,,,0,0,1949-07-17 00:00:00.0,,,0.0000,0,High School Degree,S,F
+1289,Sharon Campers,Sharon,Campers,,,0,0,1959-10-11 00:00:00.0,,,0.0000,0,Bachelors Degree,M,M
+1290,William Griego,William,Griego,,,0,0,1942-07-10 00:00:00.0,,,0.0000,0,High School Degree,M,M
+1291,Patricia Caldwell,Patricia,Caldwell,,,0,0,1960-10-08 00:00:00.0,,,0.0000,0,Graduate Degree,M,F
+1292,Jane King,Jane,King,,,0,0,1950-01-20 00:00:00.0,,,0.0000,0,Bachelors Degree,S,F
+1293,Mary Thomas,Mary,Thomas,,,0,0,1944-08-25 00:00:00.0,,,0.0000,0,Bachelors Degree,S,M
+1294,Joseph Schilke,Joseph,Schilke,,,0,0,1932-04-21 00:00:00.0,,,0.0000,0,Bachelors Degree,M,M
+1295,Angel Forsythe,Angel,Forsythe,,,0,0,1929-05-24 00:00:00.0,,,0.0000,0,Graduate Degree,M,M
+1296,Lutgardis Harp,Lutgardis,Harp,,,0,0,1930-01-11 00:00:00.0,,,0.0000,0,Bachelors Degree,M,F
+1297,Joann Mramor,Joann,Mramor,,,0,0,1961-05-12 00:00:00.0,,,0.0000,0,Bachelors Degree,S,M
+1298,Ashley Noll,Ashley,Noll,,,0,0,1954-10-05 00:00:00.0,,,0.0000,0,High School Degree,M,F
+1299,Shona Grimm,Shona,Grimm,,,0,0,1918-06-01 00:00:00.0,,,0.0000,0,High School Degree,M,M

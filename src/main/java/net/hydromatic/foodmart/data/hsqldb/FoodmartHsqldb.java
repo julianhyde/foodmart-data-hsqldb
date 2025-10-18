@@ -16,6 +16,15 @@
  */
 package net.hydromatic.foodmart.data.hsqldb;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /** Foodmart data set in hsqldb format. */
 public class FoodmartHsqldb {
   /** URI of the hsqldb database. */
@@ -23,6 +32,237 @@ public class FoodmartHsqldb {
 
   public static final String USER = "FOODMART";
   public static final String PASSWORD = "FOODMART";
+
+  /** Consumer interface for processing table metadata. */
+  public interface TableConsumer {
+    void accept(String tableName, String... quotedColumns);
+  }
+
+  /**
+   * Invokes the consumer for each table in the Foodmart schema.
+   *
+   * @param consumer Consumer to invoke for each table with its name and quoted
+   *     column names
+   */
+  public static void forEachTable(TableConsumer consumer) {
+    consumer.accept(
+        "account",
+        "account_description",
+        "account_type",
+        "account_rollup",
+        "Custom_Members");
+    consumer.accept("agg_c_10_sales_fact_1997", "quarter");
+    consumer.accept("agg_c_14_sales_fact_1997", "quarter");
+    consumer.accept("agg_c_special_sales_fact_1997", "time_quarter");
+    consumer.accept(
+        "agg_g_ms_pcat_sales_fact_1997",
+        "gender",
+        "marital_status",
+        "product_family",
+        "product_department",
+        "product_category",
+        "quarter");
+    consumer.accept("agg_l_03_sales_fact_1997");
+    consumer.accept("agg_l_04_sales_fact_1997");
+    consumer.accept("agg_l_05_sales_fact_1997");
+    consumer.accept(
+        "agg_lc_06_sales_fact_1997", "city", "state_province", "country");
+    consumer.accept("agg_lc_100_sales_fact_1997", "quarter");
+    consumer.accept("agg_ll_01_sales_fact_1997");
+    consumer.accept("agg_pl_01_sales_fact_1997");
+    consumer.accept(
+        "category",
+        "category_id",
+        "category_parent",
+        "category_description",
+        "category_rollup");
+    consumer.accept("currency", "date", "currency");
+    consumer.accept(
+        "customer",
+        "lname",
+        "fname",
+        "mi",
+        "address1",
+        "address2",
+        "address3",
+        "address4",
+        "city",
+        "state_province",
+        "postal_code",
+        "country",
+        "phone1",
+        "phone2",
+        "birthdate",
+        "marital_status",
+        "yearly_income",
+        "gender",
+        "education",
+        "date_accnt_opened",
+        "member_card",
+        "occupation",
+        "houseowner",
+        "fullname");
+    consumer.accept("days", "week_day");
+    consumer.accept("department", "department_description");
+    consumer.accept(
+        "employee",
+        "full_name",
+        "first_name",
+        "last_name",
+        "position_title",
+        "birth_date",
+        "hire_date",
+        "end_date",
+        "education_level",
+        "marital_status",
+        "gender",
+        "management_role");
+    consumer.accept("employee_closure");
+    consumer.accept("expense_fact", "exp_date", "category_id");
+    consumer.accept("inventory_fact_1997");
+    consumer.accept("inventory_fact_1998");
+    consumer.accept(
+        "position", "position_title", "pay_type", "management_role");
+    consumer.accept("product", "brand_name", "product_name");
+    consumer.accept(
+        "product_class",
+        "product_subcategory",
+        "product_category",
+        "product_department",
+        "product_family");
+    consumer.accept(
+        "promotion", "promotion_name", "media_type", "start_date", "end_date");
+    consumer.accept(
+        "region",
+        "sales_city",
+        "sales_state_province",
+        "sales_district",
+        "sales_region",
+        "sales_country");
+    consumer.accept(
+        "reserve_employee",
+        "full_name",
+        "first_name",
+        "last_name",
+        "position_title",
+        "birth_date",
+        "hire_date",
+        "end_date",
+        "education_level",
+        "marital_status",
+        "gender");
+    consumer.accept("salary", "pay_date");
+    consumer.accept("sales_fact_1997");
+    consumer.accept("sales_fact_1998");
+    consumer.accept("sales_fact_dec_1998");
+    consumer.accept(
+        "store",
+        "store_type",
+        "store_name",
+        "store_street_address",
+        "store_city",
+        "store_state",
+        "store_postal_code",
+        "store_country",
+        "store_manager",
+        "store_phone",
+        "store_fax",
+        "first_opened_date",
+        "last_remodel_date",
+        "florist");
+    consumer.accept(
+        "store_ragged",
+        "store_type",
+        "store_name",
+        "store_street_address",
+        "store_city",
+        "store_state",
+        "store_postal_code",
+        "store_country",
+        "store_manager",
+        "store_phone",
+        "store_fax",
+        "first_opened_date",
+        "last_remodel_date",
+        "florist");
+    consumer.accept(
+        "time_by_day",
+        "the_date",
+        "the_day",
+        "the_month",
+        "the_year",
+        "day_of_month",
+        "week_of_year",
+        "month_of_year",
+        "quarter",
+        "fiscal_period");
+    consumer.accept(
+        "warehouse",
+        "warehouse_name",
+        "wa_address1",
+        "wa_address2",
+        "wa_address3",
+        "wa_address4",
+        "warehouse_city",
+        "warehouse_state_province",
+        "warehouse_postal_code",
+        "warehouse_country",
+        "warehouse_owner_name",
+        "warehouse_phone",
+        "warehouse_fax");
+    consumer.accept("warehouse_class", "description");
+  }
+
+  /** Returns the list of table names in the Foodmart schema. */
+  public static List<String> tableNames() {
+    List<String> names = new ArrayList<>();
+    forEachTable((tableName, quotedColumns) -> names.add(tableName));
+    return names;
+  }
+
+  /**
+   * Converts a table name to a CSV file URI relative to the jar file root.
+   *
+   * <p>For example, {@code tableUri("customer")} returns {@code
+   * "/csv/customer.csv"}.
+   */
+  public static String tableUri(String tableName) {
+    return "/csv/" + tableName.toLowerCase() + ".csv";
+  }
+
+  /**
+   * Returns the INSERT statements for all Foodmart schema data.
+   *
+   * <p>Generates statements by reading from the CSV files lazily using an
+   * iterator.
+   *
+   * @return an iterable of INSERT statements
+   */
+  public static Iterable<String> generateInserts() {
+    final Map<String, List<Integer>> columnTypes = new HashMap<>();
+    try (Connection c = DriverManager.getConnection(URI, USER, PASSWORD);
+        ResultSet x = c.getMetaData().getColumns(null, "foodmart", "%", "%")) {
+      while (x.next()) {
+        String tableName = x.getString(3);
+        int dataType = x.getInt(5);
+        columnTypes
+            .computeIfAbsent(tableName, t -> new ArrayList<>())
+            .add(dataType);
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    List<Iterable<String>> iterables = new ArrayList<>();
+    forEachTable(
+        (tableName, quotedColumns) ->
+            iterables.add(
+                () ->
+                    new StatementGenerator(
+                        FoodmartHsqldb.class,
+                        tableName,
+                        columnTypes.get(tableName))));
+    return CompositeIterator.concat(iterables);
+  }
 }
 
 // End FoodmartHsqldb.java

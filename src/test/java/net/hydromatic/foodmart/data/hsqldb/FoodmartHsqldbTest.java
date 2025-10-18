@@ -16,22 +16,20 @@
  */
 package net.hydromatic.foodmart.data.hsqldb;
 
-import org.hamcrest.Matcher;
-import org.junit.Test;
-
-import java.sql.*;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-/**
- * Kick the tires.
- */
+import java.sql.*;
+import org.hamcrest.Matcher;
+import org.junit.Test;
+
+/** Kick the tires. */
 public class FoodmartHsqldbTest {
-  @Test public void test() throws SQLException {
+  @Test
+  public void test() throws SQLException {
     final Connection connection =
-        DriverManager.getConnection(FoodmartHsqldb.URI, FoodmartHsqldb.USER,
-            FoodmartHsqldb.PASSWORD);
+        DriverManager.getConnection(
+            FoodmartHsqldb.URI, FoodmartHsqldb.USER, FoodmartHsqldb.PASSWORD);
     final Statement statement = connection.createStatement();
     foo(statement.executeQuery("select * from \"days\""), -1, is(7));
     foo(statement.executeQuery("select * from \"product\""), 1, is(1560));
@@ -39,8 +37,9 @@ public class FoodmartHsqldbTest {
     connection.close();
   }
 
-  private void foo(ResultSet resultSet, int printLimit,
-      Matcher<Integer> rowCountMatcher) throws SQLException {
+  private void foo(
+      ResultSet resultSet, int printLimit, Matcher<Integer> rowCountMatcher)
+      throws SQLException {
     final ResultSetMetaData metaData = resultSet.getMetaData();
     final int columnCount = metaData.getColumnCount();
     int row = 0;

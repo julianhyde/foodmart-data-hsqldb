@@ -3,6 +3,28 @@
 For a full list of releases, see
 <a href="https://github.com/julianhyde/foodmart-data-hsqldb/releases">GitHub</a>.
 
+## <a href="https://github.com/julianhyde/foodmart-data-hsqldb/releases/tag/foodmart-data-hsqldb-0.6">0.6</a> / 2025-10-18
+
+This release moves the data from an HSQLDB `foodmart.script` file to a
+`.csv` file for each table; consumers may now access those files from
+the jar directly, if they wish.
+
+Minimum HSQLDB version moves from 2.0.0 to 2.3.0; default HSQLDB
+version is now 2.7.4.
+
+* Bump Maven from 3.5.4 to 3.9.11,
+  `build-helper-maven-plugin` to 3.6,
+  `git-commit-id-plugin` to 4.9.10,
+  `maven-compiler-plugin` to 3.14.0,
+  `maven-enforcer-plugin` to 3.0,
+  `maven-release-plugin` to 2.4.2;
+  and add `maven-enforcer-plugin` version 3.0.0
+* In Maven, add `central-publishing-maven-plugin`
+* Bump HSQLDB from 2.5.1 to 2.7.4
+* Add `googleformatter-maven-plugin` and reformat Java code
+* Change git clone URL to HTTPS
+* Add Javadoc badge to README
+
 ## <a href="https://github.com/julianhyde/foodmart-data-hsqldb/releases/tag/foodmart-data-hsqldb-0.5">0.5</a> / 2022-03-08
 
 This release changes the file format from HSQLDB 1.8 to 2.0,

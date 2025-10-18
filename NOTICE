@@ -2,22 +2,10 @@ foodmart-data-hsqldb
 Foodmart data set in hsqldb format
 
 Copyright (C) 2004-2005 Julian Hyde
-Copyright (C) 2015-2022 Julian Hyde
+Copyright (C) 2015-2025 Julian Hyde
 Copyright (C) 2005-2012 Pentaho
 All Rights Reserved.
 
 Based upon the Pentaho mondrian-data-foodmart artifact developed as
 part of the Pentaho Mondrian OLAP engine
 (http://mondrian.pentaho.org).
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this software except in compliance with the License.
-You may obtain a copy of the License at:
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.

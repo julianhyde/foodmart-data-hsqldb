@@ -20,6 +20,7 @@ License.
 -->
 [![Build Status](https://github.com/julianhyde/foodmart-data-hsqldb/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/julianhyde/foodmart-data-hsqldb/actions?query=branch%3Amain)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.hydromatic/foodmart-data-hsqldb/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.hydromatic/foodmart-data-hsqldb)
+[![javadoc](https://javadoc.io/badge2/net.hydromatic/foodmart-data-hsqldb/javadoc.svg)](https://javadoc.io/doc/net.hydromatic/foodmart-data-hsqldb)
 
 # foodmart-data-hsqldb
 Foodmart data set in hsqldb format
@@ -30,7 +31,7 @@ HSQLDB database.
 It originated as part of the test suite of the
 <a href="https://mondrian.pentaho.org">Pentaho Mondrian OLAP engine</a>.
 
-# Schema
+## Schema
 
 Foodmart contains 37 tables:
 * 7 fact tables: sales_fact_1997, sales_fact_1998, sales_fact_dec_1998,
@@ -44,43 +45,29 @@ Here is a schema diagram:
 
 ![Foodmart schema diagram](foodmart-schema.png)
 
-# Using the data set
+## Using the data set
 
 The data set is packaged as a jar file that is published to
 [Maven Central](https://search.maven.org/#search%7Cga%7C1%7Ca%3Afoodmart-data-hsqldb)
 as a Maven artifact. To use the data in your Java application,
-add the artifact to your project's dependencies:
+add the artifact to your project's dependencies,
+as described [below](#from-maven).
 
-```xml
-<dependencies>
-  <dependency>
-    <groupId>org.hsqldb</groupId>
-    <artifactId>hsqldb</artifactId>
-    <version>2.5.1</version>
-  </dependency>
-  <dependency>
-    <groupId>net.hydromatic</groupId>
-    <artifactId>foodmart-data-hsqldb</artifactId>
-    <version>0.5</version>
-  </dependency>
-</dependencies>
-```
+## To connect and read data
 
-(foodmart-data-hsqldb requires Java 8 or higher, and HSQLDB 2.0.0 or higher;
-Java 11
-<a href="http://hsqldb.org/doc/2.0/changelist_2_0.txt">is required</a>
-for HSQLDB 2.6.0 and higher.)
-
-Now you can connect using Java code:
+Connect to the database using the URL, username and password
+constants in the `FoodmartHsqldb` class:
 
 ```java
 import java.sql.Connection;
-import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+
+import net.hydromatic.foodmart.data.hsqldb.FoodmartHsqldb;
 
 Connection connection =
-    DriverManager.getConnection("jdbc:hsqldb:res:foodmart",
-        "FOODMART", "FOODMART");
+    DriverManager.getConnection(FoodmartHsqldb.URI,
+        FoodmartHsqldb.USER, FoodmartHsqldb.PASSWORD);
 Statement statement = connection.createStatement();
 ResultSet resultSet =
     statement.executeQuery("select \"employee_id\", \"full_name\"\n"
@@ -93,14 +80,16 @@ statement.close();
 connection.close();
 ```
 
-You can also connect using a JDBC interface such as [sqlline](https://github.com/julianhyde/sqlline).
-Make sure that `foodmart-data-hsqldb.jar` is on the class path, and start `sqlline`:
+## Using SQLLine
+
+You can also connect using a JDBC interface such as
+[sqlline](https://github.com/julianhyde/sqlline).  Start `sqlline`:
 
 ```sql
 $ ./sqlline
 sqlline version 1.12.0
-sqlline> !connect jdbc:hsqldb:res:foodmart sa ""
-0: jdbc:hsqldb:res:foodmart> select count(*) from "foodmart"."sales_fact_1997";
+sqlline> !connect jdbc:hsqldb:res:foodmart FOODMART FOODMART
+0: jdbc:hsqldb:res:foodmart> select count(*) from "sales_fact_1997";
 +----------------------+
 |          C1          |
 +----------------------+
@@ -109,6 +98,9 @@ sqlline> !connect jdbc:hsqldb:res:foodmart sa ""
 1 row selected (0.004 seconds)
 0: jdbc:hsqldb:res:foodmart> !quit
 ```
+
+You may need to edit the `sqlline` or `sqlline.bat` launcher script,
+adding `foodmart-data-hsqldb.jar` to your class path.
 
 ## Get foodmart-data-hsqldb
 
@@ -121,16 +113,16 @@ Get foodmart-data-hsqldb from
 <dependency>
   <groupId>net.hydromatic</groupId>
   <artifactId>foodmart-data-hsqldb</artifactId>
-  <version>0.5</version>
+  <version>0.6</version>
 </dependency>
 ```
 
 ### Download and build
 
-Java version 11 or higher.
+Use Java version 11 or higher.
 
 ```bash
-$ git clone git://github.com/julianhyde/foodmart-data-hsqldb.git
+$ git clone https://github.com/julianhyde/foodmart-data-hsqldb.git
 $ cd foodmart-data-hsqldb
 $ ./mvnw install
 ```
@@ -141,9 +133,9 @@ On Windows, the last line is
 > mvnw install
 ```
 
-### Make a release
-
-See [hydromatic-parent](https://github.com/julianhyde/hydromatic-parent).
+If you are using Java 8, you should add a parameter
+`-Dhsqldb.version=2.5.1`, because HSQLDB 2.6.0 or higher
+requires at least JDK 11.
 
 ## See also
 
@@ -153,19 +145,21 @@ Similar data sets:
 * [foodmart-data-json](https://github.com/julianhyde/foodmart-data-json)
 * [foodmart-data-mysql](https://github.com/julianhyde/foodmart-data-mysql)
 * [foodmart-queries](https://github.com/julianhyde/foodmart-queries)
+* [look-data-hsqldb](https://github.com/hydromatic/look-data-hsqldb)
+* [sakila-data-hsqldb](https://github.com/hydromatic/sakila-data-hsqldb)
 * [scott-data-hsqldb](https://github.com/julianhyde/scott-data-hsqldb)
 * [steelwheels-data-hsqldb](https://github.com/julianhyde/steelwheels-data-hsqldb)
 
 ## More information
 
-* License: Apache License, Version 2.0
-* Author: Julian Hyde
-* Blog: https://blog.hydromatic.net
-* Project page: http://www.hydromatic.net/foodmart-data-hsqldb
-* Source code: https://github.com/julianhyde/foodmart-data-hsqldb
-* Developers list:
-  <a href="mailto:dev@calcite.apache.org">dev at calcite.apache.org</a>
-  (<a href="https://mail-archives.apache.org/mod_mbox/calcite-dev/">archive</a>,
-  <a href="mailto:dev-subscribe@calcite.apache.org">subscribe</a>)
-* Issues: https://github.com/julianhyde/foodmart-data-hsqldb/issues
-* <a href="HISTORY.md">Release notes and history</a>
+* **License:** Apache License, Version 2.0
+* **Author:** [Julian Hyde](https://github.com/julianhyde)
+  ([@julianhyde](https://twitter.com/julianhyde))
+* **Blog:** http://blog.hydromatic.net
+* **Source code:** https://github.com/julianhyde/foodmart-data-hsqldb
+* **Developers list:**
+  [dev@calcite.apache.org](mailto:dev@calcite.apache.org)
+  ([archive](https://mail-archives.apache.org/mod_mbox/calcite-dev/),
+  [subscribe](mailto:dev-subscribe@calcite.apache.org))
+* **Issues:** https://github.com/julianhyde/foodmart-data-hsqldb/issues
+* **Release notes:** [HISTORY.md](HISTORY.md)

@@ -3,6 +3,21 @@
 For a full list of releases, see
 <a href="https://github.com/julianhyde/foodmart-data-hsqldb/releases">GitHub</a>.
 
+## <a href="https://github.com/julianhyde/foodmart-data-hsqldb/releases/tag/foodmart-data-hsqldb-0.6.1">0.6.1</a> / 2025-10-19
+
+The previous release had a serious performance problem, and
+therefore this is a patch release. We strongly recommend using this
+release (0.6.1) rather than 0.6.
+
+Database load was very slow because we were creating indexes on text
+tables in a compressed Jar file. So in this revision, we go back to
+using memory tables (with indexes) and the text tables are merely the
+source of data. The text tables are in a new schema, "foodmart_csv",
+but you should only use them for sequential scan. Also, as in 0.6,
+the CSV files can be read directly from the jar file.
+
+* Switch back to memory tables (but still load data from CSV files via text tables)
+
 ## <a href="https://github.com/julianhyde/foodmart-data-hsqldb/releases/tag/foodmart-data-hsqldb-0.6">0.6</a> / 2025-10-18
 
 This release moves the data from an HSQLDB `foodmart.script` file to a

@@ -21,29 +21,132 @@ SET DATABASE TEXT TABLE DEFAULTS ''
 CREATE USER SA PASSWORD ''
 CREATE USER FOODMART PASSWORD 'FOODMART'
 CREATE SCHEMA PUBLIC AUTHORIZATION DBA
+CREATE SCHEMA "foodmart_csv" AUTHORIZATION SA
 CREATE SCHEMA "foodmart" AUTHORIZATION SA
+SET SCHEMA "foodmart_csv"
+SET DATABASE TEXT TABLE DEFAULTS 'quoted=true;all_quoted=false;encoding=ASCII;fs=,;qc="'
+CREATE TEXT TABLE "foodmart_csv"."account"("account_id" INTEGER NOT NULL,"account_parent" INTEGER,"account_description" VARCHAR(30),"account_type" VARCHAR(30) NOT NULL,"account_rollup" VARCHAR(30) NOT NULL,"Custom_Members" VARCHAR(255))
+CREATE TEXT TABLE "foodmart_csv"."agg_c_10_sales_fact_1997"("month_of_year" SMALLINT NOT NULL,"quarter" VARCHAR(30) NOT NULL,"the_year" SMALLINT NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"customer_count" INTEGER NOT NULL,"fact_count" INTEGER NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."agg_c_14_sales_fact_1997"("product_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"store_id" INTEGER NOT NULL,"promotion_id" INTEGER NOT NULL,"month_of_year" SMALLINT NOT NULL,"quarter" VARCHAR(30) NOT NULL,"the_year" SMALLINT NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"fact_count" INTEGER NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."agg_c_special_sales_fact_1997"("product_id" INTEGER NOT NULL,"promotion_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"store_id" INTEGER NOT NULL,"time_month" SMALLINT NOT NULL,"time_quarter" VARCHAR(30) NOT NULL,"time_year" SMALLINT NOT NULL,"store_sales_sum" DECIMAL(10,4) NOT NULL,"store_cost_sum" DECIMAL(10,4) NOT NULL,"unit_sales_sum" DECIMAL(10,4) NOT NULL,"fact_count" INTEGER NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."agg_g_ms_pcat_sales_fact_1997"("gender" VARCHAR(30) NOT NULL,"marital_status" VARCHAR(30) NOT NULL,"product_family" VARCHAR(30),"product_department" VARCHAR(30),"product_category" VARCHAR(30),"month_of_year" SMALLINT NOT NULL,"quarter" VARCHAR(30) NOT NULL,"the_year" SMALLINT NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"customer_count" INTEGER NOT NULL,"fact_count" INTEGER NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."agg_l_03_sales_fact_1997"("time_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"fact_count" INTEGER NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."agg_l_04_sales_fact_1997"("time_id" INTEGER NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"customer_count" INTEGER NOT NULL,"fact_count" INTEGER NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."agg_l_05_sales_fact_1997"("product_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"promotion_id" INTEGER NOT NULL,"store_id" INTEGER NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"fact_count" INTEGER NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."agg_lc_06_sales_fact_1997"("time_id" INTEGER NOT NULL,"city" VARCHAR(30) NOT NULL,"state_province" VARCHAR(30) NOT NULL,"country" VARCHAR(30) NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"fact_count" INTEGER NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."agg_lc_100_sales_fact_1997"("product_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"quarter" VARCHAR(30) NOT NULL,"the_year" SMALLINT NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"fact_count" INTEGER NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."agg_ll_01_sales_fact_1997"("product_id" INTEGER NOT NULL,"time_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"fact_count" INTEGER NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."agg_pl_01_sales_fact_1997"("product_id" INTEGER NOT NULL,"time_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"store_sales_sum" DECIMAL(10,4) NOT NULL,"store_cost_sum" DECIMAL(10,4) NOT NULL,"unit_sales_sum" DECIMAL(10,4) NOT NULL,"fact_count" INTEGER NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."category"("category_id" VARCHAR(30) NOT NULL,"category_parent" VARCHAR(30),"category_description" VARCHAR(30) NOT NULL,"category_rollup" VARCHAR(30))
+CREATE TEXT TABLE "foodmart_csv"."currency"("currency_id" INTEGER NOT NULL,"date" DATE NOT NULL,"currency" VARCHAR(30) NOT NULL,"conversion_ratio" DECIMAL(10,4) NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."customer"("customer_id" INTEGER NOT NULL,"account_num" BIGINT NOT NULL,"lname" VARCHAR(30) NOT NULL,"fname" VARCHAR(30) NOT NULL,"mi" VARCHAR(30),"address1" VARCHAR(30),"address2" VARCHAR(30),"address3" VARCHAR(30),"address4" VARCHAR(30),"city" VARCHAR(30),"state_province" VARCHAR(30),"postal_code" VARCHAR(30) NOT NULL,"country" VARCHAR(30) NOT NULL,"customer_region_id" INTEGER NOT NULL,"phone1" VARCHAR(30) NOT NULL,"phone2" VARCHAR(30) NOT NULL,"birthdate" DATE NOT NULL,"marital_status" VARCHAR(30) NOT NULL,"yearly_income" VARCHAR(30) NOT NULL,"gender" VARCHAR(30) NOT NULL,"total_children" SMALLINT NOT NULL,"num_children_at_home" SMALLINT NOT NULL,"education" VARCHAR(30) NOT NULL,"date_accnt_opened" DATE NOT NULL,"member_card" VARCHAR(30),"occupation" VARCHAR(30),"houseowner" VARCHAR(30),"num_cars_owned" INTEGER,"fullname" VARCHAR(60) NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."days"("day" INTEGER NOT NULL,"week_day" VARCHAR(30) NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."department"("department_id" INTEGER NOT NULL,"department_description" VARCHAR(30) NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."employee"("employee_id" INTEGER NOT NULL,"full_name" VARCHAR(30) NOT NULL,"first_name" VARCHAR(30) NOT NULL,"last_name" VARCHAR(30) NOT NULL,"position_id" INTEGER,"position_title" VARCHAR(30),"store_id" INTEGER NOT NULL,"department_id" INTEGER NOT NULL,"birth_date" DATE NOT NULL,"hire_date" TIMESTAMP,"end_date" TIMESTAMP,"salary" DECIMAL(10,4) NOT NULL,"supervisor_id" INTEGER,"education_level" VARCHAR(30) NOT NULL,"marital_status" VARCHAR(30) NOT NULL,"gender" VARCHAR(30) NOT NULL,"management_role" VARCHAR(30))
+CREATE TEXT TABLE "foodmart_csv"."employee_closure"("employee_id" INTEGER NOT NULL,"supervisor_id" INTEGER NOT NULL,"distance" INTEGER)
+CREATE TEXT TABLE "foodmart_csv"."expense_fact"("store_id" INTEGER NOT NULL,"account_id" INTEGER NOT NULL,"exp_date" TIMESTAMP NOT NULL,"time_id" INTEGER NOT NULL,"category_id" VARCHAR(30) NOT NULL,"currency_id" INTEGER NOT NULL,"amount" DECIMAL(10,4) NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."inventory_fact_1997"("product_id" INTEGER NOT NULL,"time_id" INTEGER,"warehouse_id" INTEGER,"store_id" INTEGER,"units_ordered" INTEGER,"units_shipped" INTEGER,"warehouse_sales" DECIMAL(10,4),"warehouse_cost" DECIMAL(10,4),"supply_time" SMALLINT,"store_invoice" DECIMAL(10,4))
+CREATE TEXT TABLE "foodmart_csv"."inventory_fact_1998"("product_id" INTEGER NOT NULL,"time_id" INTEGER,"warehouse_id" INTEGER,"store_id" INTEGER,"units_ordered" INTEGER,"units_shipped" INTEGER,"warehouse_sales" DECIMAL(10,4),"warehouse_cost" DECIMAL(10,4),"supply_time" SMALLINT,"store_invoice" DECIMAL(10,4))
+CREATE TEXT TABLE "foodmart_csv"."position"("position_id" INTEGER NOT NULL,"position_title" VARCHAR(30) NOT NULL,"pay_type" VARCHAR(30) NOT NULL,"min_scale" DECIMAL(10,4) NOT NULL,"max_scale" DECIMAL(10,4) NOT NULL,"management_role" VARCHAR(30) NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."product"("product_class_id" INTEGER NOT NULL,"product_id" INTEGER NOT NULL,"brand_name" VARCHAR(60),"product_name" VARCHAR(60) NOT NULL,"SKU" BIGINT NOT NULL,"SRP" DECIMAL(10,4),"gross_weight" DOUBLE,"net_weight" DOUBLE,"recyclable_package" BOOLEAN,"low_fat" BOOLEAN,"units_per_case" SMALLINT,"cases_per_pallet" SMALLINT,"shelf_width" DOUBLE,"shelf_height" DOUBLE,"shelf_depth" DOUBLE)
+CREATE TEXT TABLE "foodmart_csv"."product_class"("product_class_id" INTEGER NOT NULL,"product_subcategory" VARCHAR(30),"product_category" VARCHAR(30),"product_department" VARCHAR(30),"product_family" VARCHAR(30))
+CREATE TEXT TABLE "foodmart_csv"."promotion"("promotion_id" INTEGER NOT NULL,"promotion_district_id" INTEGER,"promotion_name" VARCHAR(30),"media_type" VARCHAR(30),"cost" DECIMAL(10,4),"start_date" TIMESTAMP,"end_date" TIMESTAMP)
+CREATE TEXT TABLE "foodmart_csv"."region"("region_id" INTEGER NOT NULL,"sales_city" VARCHAR(30),"sales_state_province" VARCHAR(30),"sales_district" VARCHAR(30),"sales_region" VARCHAR(30),"sales_country" VARCHAR(30),"sales_district_id" INTEGER)
+CREATE TEXT TABLE "foodmart_csv"."reserve_employee"("employee_id" INTEGER NOT NULL,"full_name" VARCHAR(30) NOT NULL,"first_name" VARCHAR(30) NOT NULL,"last_name" VARCHAR(30) NOT NULL,"position_id" INTEGER,"position_title" VARCHAR(30),"store_id" INTEGER NOT NULL,"department_id" INTEGER NOT NULL,"birth_date" TIMESTAMP NOT NULL,"hire_date" TIMESTAMP,"end_date" TIMESTAMP,"salary" DECIMAL(10,4) NOT NULL,"supervisor_id" INTEGER,"education_level" VARCHAR(30) NOT NULL,"marital_status" VARCHAR(30) NOT NULL,"gender" VARCHAR(30) NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."salary"("pay_date" TIMESTAMP NOT NULL,"employee_id" INTEGER NOT NULL,"department_id" INTEGER NOT NULL,"currency_id" INTEGER NOT NULL,"salary_paid" DECIMAL(10,4) NOT NULL,"overtime_paid" DECIMAL(10,4) NOT NULL,"vacation_accrued" DOUBLE NOT NULL,"vacation_used" DOUBLE NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."sales_fact_1997"("product_id" INTEGER NOT NULL,"time_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"promotion_id" INTEGER NOT NULL,"store_id" INTEGER NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."sales_fact_1998"("product_id" INTEGER NOT NULL,"time_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"promotion_id" INTEGER NOT NULL,"store_id" INTEGER NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."sales_fact_dec_1998"("product_id" INTEGER NOT NULL,"time_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"promotion_id" INTEGER NOT NULL,"store_id" INTEGER NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL)
+CREATE TEXT TABLE "foodmart_csv"."store"("store_id" INTEGER NOT NULL,"store_type" VARCHAR(30),"region_id" INTEGER,"store_name" VARCHAR(30),"store_number" INTEGER,"store_street_address" VARCHAR(30),"store_city" VARCHAR(30),"store_state" VARCHAR(30),"store_postal_code" VARCHAR(30),"store_country" VARCHAR(30),"store_manager" VARCHAR(30),"store_phone" VARCHAR(30),"store_fax" VARCHAR(30),"first_opened_date" TIMESTAMP,"last_remodel_date" TIMESTAMP,"store_sqft" INTEGER,"grocery_sqft" INTEGER,"frozen_sqft" INTEGER,"meat_sqft" INTEGER,"coffee_bar" BOOLEAN,"video_store" BOOLEAN,"salad_bar" BOOLEAN,"prepared_food" BOOLEAN,"florist" BOOLEAN)
+CREATE TEXT TABLE "foodmart_csv"."store_ragged"("store_id" INTEGER NOT NULL,"store_type" VARCHAR(30),"region_id" INTEGER,"store_name" VARCHAR(30),"store_number" INTEGER,"store_street_address" VARCHAR(30),"store_city" VARCHAR(30),"store_state" VARCHAR(30),"store_postal_code" VARCHAR(30),"store_country" VARCHAR(30),"store_manager" VARCHAR(30),"store_phone" VARCHAR(30),"store_fax" VARCHAR(30),"first_opened_date" TIMESTAMP,"last_remodel_date" TIMESTAMP,"store_sqft" INTEGER,"grocery_sqft" INTEGER,"frozen_sqft" INTEGER,"meat_sqft" INTEGER,"coffee_bar" BOOLEAN,"video_store" BOOLEAN,"salad_bar" BOOLEAN,"prepared_food" BOOLEAN,"florist" BOOLEAN)
+CREATE TEXT TABLE "foodmart_csv"."time_by_day"("time_id" INTEGER NOT NULL,"the_date" TIMESTAMP,"the_day" VARCHAR(30),"the_month" VARCHAR(30),"the_year" SMALLINT,"day_of_month" SMALLINT,"week_of_year" INTEGER,"month_of_year" SMALLINT,"quarter" VARCHAR(30),"fiscal_period" VARCHAR(30))
+CREATE TEXT TABLE "foodmart_csv"."warehouse"("warehouse_id" INTEGER NOT NULL,"warehouse_class_id" INTEGER,"stores_id" INTEGER,"warehouse_name" VARCHAR(60),"wa_address1" VARCHAR(30),"wa_address2" VARCHAR(30),"wa_address3" VARCHAR(30),"wa_address4" VARCHAR(30),"warehouse_city" VARCHAR(30),"warehouse_state_province" VARCHAR(30),"warehouse_postal_code" VARCHAR(30),"warehouse_country" VARCHAR(30),"warehouse_owner_name" VARCHAR(30),"warehouse_phone" VARCHAR(30),"warehouse_fax" VARCHAR(30))
+CREATE TEXT TABLE "foodmart_csv"."warehouse_class"("warehouse_class_id" INTEGER NOT NULL,"description" VARCHAR(30))
+SET TABLE "foodmart_csv"."account" SOURCE '/csv/account.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."agg_c_10_sales_fact_1997" SOURCE '/csv/agg_c_10_sales_fact_1997.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."agg_c_14_sales_fact_1997" SOURCE '/csv/agg_c_14_sales_fact_1997.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."agg_c_special_sales_fact_1997" SOURCE '/csv/agg_c_special_sales_fact_1997.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."agg_g_ms_pcat_sales_fact_1997" SOURCE '/csv/agg_g_ms_pcat_sales_fact_1997.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."agg_l_03_sales_fact_1997" SOURCE '/csv/agg_l_03_sales_fact_1997.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."agg_l_04_sales_fact_1997" SOURCE '/csv/agg_l_04_sales_fact_1997.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."agg_l_05_sales_fact_1997" SOURCE '/csv/agg_l_05_sales_fact_1997.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."agg_lc_06_sales_fact_1997" SOURCE '/csv/agg_lc_06_sales_fact_1997.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."agg_lc_100_sales_fact_1997" SOURCE '/csv/agg_lc_100_sales_fact_1997.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."agg_ll_01_sales_fact_1997" SOURCE '/csv/agg_ll_01_sales_fact_1997.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."agg_pl_01_sales_fact_1997" SOURCE '/csv/agg_pl_01_sales_fact_1997.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."category" SOURCE '/csv/category.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."currency" SOURCE '/csv/currency.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."customer" SOURCE '/csv/customer.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."days" SOURCE '/csv/days.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."department" SOURCE '/csv/department.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."employee" SOURCE '/csv/employee.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."employee_closure" SOURCE '/csv/employee_closure.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."expense_fact" SOURCE '/csv/expense_fact.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."inventory_fact_1997" SOURCE '/csv/inventory_fact_1997.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."inventory_fact_1998" SOURCE '/csv/inventory_fact_1998.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."position" SOURCE '/csv/position.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."product" SOURCE '/csv/product.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."product_class" SOURCE '/csv/product_class.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."promotion" SOURCE '/csv/promotion.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."region" SOURCE '/csv/region.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."reserve_employee" SOURCE '/csv/reserve_employee.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."salary" SOURCE '/csv/salary.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."sales_fact_1997" SOURCE '/csv/sales_fact_1997.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."sales_fact_1998" SOURCE '/csv/sales_fact_1998.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."sales_fact_dec_1998" SOURCE '/csv/sales_fact_dec_1998.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."store" SOURCE '/csv/store.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."store_ragged" SOURCE '/csv/store_ragged.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."time_by_day" SOURCE '/csv/time_by_day.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."warehouse" SOURCE '/csv/warehouse.csv;ignore_first=true' DESC
+SET TABLE "foodmart_csv"."warehouse_class" SOURCE '/csv/warehouse_class.csv;ignore_first=true' DESC
 SET SCHEMA "foodmart"
-SET DATABASE TEXT TABLE DEFAULTS 'quoted=true;all_quoted=false;ignore_first=true;encoding=ASCII;cache_rows=10000;fs=,;qc="'
-CREATE TEXT TABLE "foodmart"."account"("account_id" INTEGER NOT NULL,"account_parent" INTEGER,"account_description" VARCHAR(30),"account_type" VARCHAR(30) NOT NULL,"account_rollup" VARCHAR(30) NOT NULL,"Custom_Members" VARCHAR(255))
-SET TABLE "foodmart"."account" SOURCE '/csv/account.csv;ignore_first=true' DESC
+CREATE TABLE "foodmart"."account" AS (SELECT * FROM "foodmart_csv"."account") WITH DATA
+CREATE TABLE "foodmart"."agg_c_10_sales_fact_1997" AS (SELECT * FROM "foodmart_csv"."agg_c_10_sales_fact_1997") WITH DATA
+CREATE TABLE "foodmart"."agg_c_14_sales_fact_1997" AS (SELECT * FROM "foodmart_csv"."agg_c_14_sales_fact_1997") WITH DATA
+CREATE TABLE "foodmart"."agg_c_special_sales_fact_1997" AS (SELECT * FROM "foodmart_csv"."agg_c_special_sales_fact_1997") WITH DATA
+CREATE TABLE "foodmart"."agg_g_ms_pcat_sales_fact_1997" AS (SELECT * FROM "foodmart_csv"."agg_g_ms_pcat_sales_fact_1997") WITH DATA
+CREATE TABLE "foodmart"."agg_l_03_sales_fact_1997" AS (SELECT * FROM "foodmart_csv"."agg_l_03_sales_fact_1997") WITH DATA
+CREATE TABLE "foodmart"."agg_l_04_sales_fact_1997" AS (SELECT * FROM "foodmart_csv"."agg_l_04_sales_fact_1997") WITH DATA
+CREATE TABLE "foodmart"."agg_l_05_sales_fact_1997" AS (SELECT * FROM "foodmart_csv"."agg_l_05_sales_fact_1997") WITH DATA
+CREATE TABLE "foodmart"."agg_lc_06_sales_fact_1997" AS (SELECT * FROM "foodmart_csv"."agg_lc_06_sales_fact_1997") WITH DATA
+CREATE TABLE "foodmart"."agg_lc_100_sales_fact_1997" AS (SELECT * FROM "foodmart_csv"."agg_lc_100_sales_fact_1997") WITH DATA
+CREATE TABLE "foodmart"."agg_ll_01_sales_fact_1997" AS (SELECT * FROM "foodmart_csv"."agg_ll_01_sales_fact_1997") WITH DATA
+CREATE TABLE "foodmart"."agg_pl_01_sales_fact_1997" AS (SELECT * FROM "foodmart_csv"."agg_pl_01_sales_fact_1997") WITH DATA
+CREATE TABLE "foodmart"."category" AS (SELECT * FROM "foodmart_csv"."category") WITH DATA
+CREATE TABLE "foodmart"."currency" AS (SELECT * FROM "foodmart_csv"."currency") WITH DATA
+CREATE TABLE "foodmart"."customer" AS (SELECT * FROM "foodmart_csv"."customer") WITH DATA
+CREATE TABLE "foodmart"."days" AS (SELECT * FROM "foodmart_csv"."days") WITH DATA
+CREATE TABLE "foodmart"."department" AS (SELECT * FROM "foodmart_csv"."department") WITH DATA
+CREATE TABLE "foodmart"."employee" AS (SELECT * FROM "foodmart_csv"."employee") WITH DATA
+CREATE TABLE "foodmart"."employee_closure" AS (SELECT * FROM "foodmart_csv"."employee_closure") WITH DATA
+CREATE TABLE "foodmart"."expense_fact" AS (SELECT * FROM "foodmart_csv"."expense_fact") WITH DATA
+CREATE TABLE "foodmart"."inventory_fact_1997" AS (SELECT * FROM "foodmart_csv"."inventory_fact_1997") WITH DATA
+CREATE TABLE "foodmart"."inventory_fact_1998" AS (SELECT * FROM "foodmart_csv"."inventory_fact_1998") WITH DATA
+CREATE TABLE "foodmart"."position" AS (SELECT * FROM "foodmart_csv"."position") WITH DATA
+CREATE TABLE "foodmart"."product" AS (SELECT * FROM "foodmart_csv"."product") WITH DATA
+CREATE TABLE "foodmart"."product_class" AS (SELECT * FROM "foodmart_csv"."product_class") WITH DATA
+CREATE TABLE "foodmart"."promotion" AS (SELECT * FROM "foodmart_csv"."promotion") WITH DATA
+CREATE TABLE "foodmart"."region" AS (SELECT * FROM "foodmart_csv"."region") WITH DATA
+CREATE TABLE "foodmart"."reserve_employee" AS (SELECT * FROM "foodmart_csv"."reserve_employee") WITH DATA
+CREATE TABLE "foodmart"."salary" AS (SELECT * FROM "foodmart_csv"."salary") WITH DATA
+CREATE TABLE "foodmart"."sales_fact_1997" AS (SELECT * FROM "foodmart_csv"."sales_fact_1997") WITH DATA
+CREATE TABLE "foodmart"."sales_fact_1998" AS (SELECT * FROM "foodmart_csv"."sales_fact_1998") WITH DATA
+CREATE TABLE "foodmart"."sales_fact_dec_1998" AS (SELECT * FROM "foodmart_csv"."sales_fact_dec_1998") WITH DATA
+CREATE TABLE "foodmart"."store" AS (SELECT * FROM "foodmart_csv"."store") WITH DATA
+CREATE TABLE "foodmart"."store_ragged" AS (SELECT * FROM "foodmart_csv"."store_ragged") WITH DATA
+CREATE TABLE "foodmart"."time_by_day" AS (SELECT * FROM "foodmart_csv"."time_by_day") WITH DATA
+CREATE TABLE "foodmart"."warehouse" AS (SELECT * FROM "foodmart_csv"."warehouse") WITH DATA
+CREATE TABLE "foodmart"."warehouse_class" AS (SELECT * FROM "foodmart_csv"."warehouse_class") WITH DATA
 CREATE UNIQUE INDEX "i_account_id" ON "foodmart"."account"("account_id")
 CREATE INDEX "i_account_parent" ON "foodmart"."account"("account_parent")
-CREATE TEXT TABLE "foodmart"."agg_c_10_sales_fact_1997"("month_of_year" SMALLINT NOT NULL,"quarter" VARCHAR(30) NOT NULL,"the_year" SMALLINT NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"customer_count" INTEGER NOT NULL,"fact_count" INTEGER NOT NULL)
-SET TABLE "foodmart"."agg_c_10_sales_fact_1997" SOURCE '/csv/agg_c_10_sales_fact_1997.csv;ignore_first=true' DESC
-CREATE TEXT TABLE "foodmart"."agg_c_14_sales_fact_1997"("product_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"store_id" INTEGER NOT NULL,"promotion_id" INTEGER NOT NULL,"month_of_year" SMALLINT NOT NULL,"quarter" VARCHAR(30) NOT NULL,"the_year" SMALLINT NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"fact_count" INTEGER NOT NULL)
-SET TABLE "foodmart"."agg_c_14_sales_fact_1997" SOURCE '/csv/agg_c_14_sales_fact_1997.csv;ignore_first=true' DESC
 CREATE INDEX "i_sls97c14cust" ON "foodmart"."agg_c_14_sales_fact_1997"("customer_id")
 CREATE INDEX "i_sls97c14prod" ON "foodmart"."agg_c_14_sales_fact_1997"("product_id")
 CREATE INDEX "i_sls97c14promo" ON "foodmart"."agg_c_14_sales_fact_1997"("promotion_id")
 CREATE INDEX "i_sls97c14store" ON "foodmart"."agg_c_14_sales_fact_1997"("store_id")
-CREATE TEXT TABLE "foodmart"."agg_c_special_sales_fact_1997"("product_id" INTEGER NOT NULL,"promotion_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"store_id" INTEGER NOT NULL,"time_month" SMALLINT NOT NULL,"time_quarter" VARCHAR(30) NOT NULL,"time_year" SMALLINT NOT NULL,"store_sales_sum" DECIMAL(10,4) NOT NULL,"store_cost_sum" DECIMAL(10,4) NOT NULL,"unit_sales_sum" DECIMAL(10,4) NOT NULL,"fact_count" INTEGER NOT NULL)
-SET TABLE "foodmart"."agg_c_special_sales_fact_1997" SOURCE '/csv/agg_c_special_sales_fact_1997.csv;ignore_first=true' DESC
 CREATE INDEX "i_sls97speccust" ON "foodmart"."agg_c_special_sales_fact_1997"("customer_id")
 CREATE INDEX "i_sls97specprod" ON "foodmart"."agg_c_special_sales_fact_1997"("product_id")
 CREATE INDEX "i_sls97specpromo" ON "foodmart"."agg_c_special_sales_fact_1997"("promotion_id")
 CREATE INDEX "i_sls97specstore" ON "foodmart"."agg_c_special_sales_fact_1997"("store_id")
-CREATE TEXT TABLE "foodmart"."agg_g_ms_pcat_sales_fact_1997"("gender" VARCHAR(30) NOT NULL,"marital_status" VARCHAR(30) NOT NULL,"product_family" VARCHAR(30),"product_department" VARCHAR(30),"product_category" VARCHAR(30),"month_of_year" SMALLINT NOT NULL,"quarter" VARCHAR(30) NOT NULL,"the_year" SMALLINT NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"customer_count" INTEGER NOT NULL,"fact_count" INTEGER NOT NULL)
-SET TABLE "foodmart"."agg_g_ms_pcat_sales_fact_1997" SOURCE '/csv/agg_g_ms_pcat_sales_fact_1997.csv;ignore_first=true' DESC
 CREATE INDEX "i_sls97gmp_gender" ON "foodmart"."agg_g_ms_pcat_sales_fact_1997"("gender")
 CREATE INDEX "i_sls97gmp_ms" ON "foodmart"."agg_g_ms_pcat_sales_fact_1997"("marital_status")
 CREATE INDEX "i_sls97gmp_pcat" ON "foodmart"."agg_g_ms_pcat_sales_fact_1997"("product_category")
@@ -52,41 +155,21 @@ CREATE INDEX "i_sls97gmp_pfam" ON "foodmart"."agg_g_ms_pcat_sales_fact_1997"("pr
 CREATE INDEX "i_sls97gmp_tmonth" ON "foodmart"."agg_g_ms_pcat_sales_fact_1997"("month_of_year")
 CREATE INDEX "i_sls97gmp_tquarter" ON "foodmart"."agg_g_ms_pcat_sales_fact_1997"("quarter")
 CREATE INDEX "i_sls97gmp_tyear" ON "foodmart"."agg_g_ms_pcat_sales_fact_1997"("the_year")
-CREATE TEXT TABLE "foodmart"."agg_l_03_sales_fact_1997"("time_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"fact_count" INTEGER NOT NULL)
-SET TABLE "foodmart"."agg_l_03_sales_fact_1997" SOURCE '/csv/agg_l_03_sales_fact_1997.csv;ignore_first=true' DESC
-CREATE TEXT TABLE "foodmart"."agg_l_04_sales_fact_1997"("time_id" INTEGER NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"customer_count" INTEGER NOT NULL,"fact_count" INTEGER NOT NULL)
-SET TABLE "foodmart"."agg_l_04_sales_fact_1997" SOURCE '/csv/agg_l_04_sales_fact_1997.csv;ignore_first=true' DESC
-CREATE TEXT TABLE "foodmart"."agg_l_05_sales_fact_1997"("product_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"promotion_id" INTEGER NOT NULL,"store_id" INTEGER NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"fact_count" INTEGER NOT NULL)
-SET TABLE "foodmart"."agg_l_05_sales_fact_1997" SOURCE '/csv/agg_l_05_sales_fact_1997.csv;ignore_first=true' DESC
 CREATE INDEX "i_sls97l05cust" ON "foodmart"."agg_l_05_sales_fact_1997"("customer_id")
 CREATE INDEX "i_sls97l05prod" ON "foodmart"."agg_l_05_sales_fact_1997"("product_id")
 CREATE INDEX "i_sls97l05promo" ON "foodmart"."agg_l_05_sales_fact_1997"("promotion_id")
 CREATE INDEX "i_sls97l05store" ON "foodmart"."agg_l_05_sales_fact_1997"("store_id")
-CREATE TEXT TABLE "foodmart"."agg_lc_06_sales_fact_1997"("time_id" INTEGER NOT NULL,"city" VARCHAR(30) NOT NULL,"state_province" VARCHAR(30) NOT NULL,"country" VARCHAR(30) NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"fact_count" INTEGER NOT NULL)
-SET TABLE "foodmart"."agg_lc_06_sales_fact_1997" SOURCE '/csv/agg_lc_06_sales_fact_1997.csv;ignore_first=true' DESC
-CREATE TEXT TABLE "foodmart"."agg_lc_100_sales_fact_1997"("product_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"quarter" VARCHAR(30) NOT NULL,"the_year" SMALLINT NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"fact_count" INTEGER NOT NULL)
-SET TABLE "foodmart"."agg_lc_100_sales_fact_1997" SOURCE '/csv/agg_lc_100_sales_fact_1997.csv;ignore_first=true' DESC
 CREATE INDEX "i_sls97lc100cust" ON "foodmart"."agg_lc_100_sales_fact_1997"("customer_id")
 CREATE INDEX "i_sls97lc100prod" ON "foodmart"."agg_lc_100_sales_fact_1997"("product_id")
-CREATE TEXT TABLE "foodmart"."agg_ll_01_sales_fact_1997"("product_id" INTEGER NOT NULL,"time_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL,"fact_count" INTEGER NOT NULL)
-SET TABLE "foodmart"."agg_ll_01_sales_fact_1997" SOURCE '/csv/agg_ll_01_sales_fact_1997.csv;ignore_first=true' DESC
 CREATE INDEX "i_sls97ll01cust" ON "foodmart"."agg_ll_01_sales_fact_1997"("customer_id")
 CREATE INDEX "i_sls97ll01prod" ON "foodmart"."agg_ll_01_sales_fact_1997"("product_id")
 CREATE INDEX "i_sls97ll01time" ON "foodmart"."agg_ll_01_sales_fact_1997"("time_id")
-CREATE TEXT TABLE "foodmart"."agg_pl_01_sales_fact_1997"("product_id" INTEGER NOT NULL,"time_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"store_sales_sum" DECIMAL(10,4) NOT NULL,"store_cost_sum" DECIMAL(10,4) NOT NULL,"unit_sales_sum" DECIMAL(10,4) NOT NULL,"fact_count" INTEGER NOT NULL)
-SET TABLE "foodmart"."agg_pl_01_sales_fact_1997" SOURCE '/csv/agg_pl_01_sales_fact_1997.csv;ignore_first=true' DESC
 CREATE INDEX "i_sls97pl01cust" ON "foodmart"."agg_pl_01_sales_fact_1997"("customer_id")
 CREATE INDEX "i_sls97pl01prod" ON "foodmart"."agg_pl_01_sales_fact_1997"("product_id")
 CREATE INDEX "i_sls97pl01time" ON "foodmart"."agg_pl_01_sales_fact_1997"("time_id")
-CREATE TEXT TABLE "foodmart"."category"("category_id" VARCHAR(30) NOT NULL,"category_parent" VARCHAR(30),"category_description" VARCHAR(30) NOT NULL,"category_rollup" VARCHAR(30))
-SET TABLE "foodmart"."category" SOURCE '/csv/category.csv;ignore_first=true' DESC
 CREATE UNIQUE INDEX "i_category_id" ON "foodmart"."category"("category_id")
 CREATE INDEX "i_category_parent" ON "foodmart"."category"("category_parent")
-CREATE TEXT TABLE "foodmart"."currency"("currency_id" INTEGER NOT NULL,"date" DATE NOT NULL,"currency" VARCHAR(30) NOT NULL,"conversion_ratio" DECIMAL(10,4) NOT NULL)
-SET TABLE "foodmart"."currency" SOURCE '/csv/currency.csv;ignore_first=true' DESC
 CREATE UNIQUE INDEX "i_currency" ON "foodmart"."currency"("currency_id","date")
-CREATE TEXT TABLE "foodmart"."customer"("customer_id" INTEGER NOT NULL,"account_num" BIGINT NOT NULL,"lname" VARCHAR(30) NOT NULL,"fname" VARCHAR(30) NOT NULL,"mi" VARCHAR(30),"address1" VARCHAR(30),"address2" VARCHAR(30),"address3" VARCHAR(30),"address4" VARCHAR(30),"city" VARCHAR(30),"state_province" VARCHAR(30),"postal_code" VARCHAR(30) NOT NULL,"country" VARCHAR(30) NOT NULL,"customer_region_id" INTEGER NOT NULL,"phone1" VARCHAR(30) NOT NULL,"phone2" VARCHAR(30) NOT NULL,"birthdate" DATE NOT NULL,"marital_status" VARCHAR(30) NOT NULL,"yearly_income" VARCHAR(30) NOT NULL,"gender" VARCHAR(30) NOT NULL,"total_children" SMALLINT NOT NULL,"num_children_at_home" SMALLINT NOT NULL,"education" VARCHAR(30) NOT NULL,"date_accnt_opened" DATE NOT NULL,"member_card" VARCHAR(30),"occupation" VARCHAR(30),"houseowner" VARCHAR(30),"num_cars_owned" INTEGER,"fullname" VARCHAR(60) NOT NULL)
-SET TABLE "foodmart"."customer" SOURCE '/csv/customer.csv;ignore_first=true' DESC
 CREATE UNIQUE INDEX "i_customer_id" ON "foodmart"."customer"("customer_id")
 CREATE INDEX "i_cust_acct_num" ON "foodmart"."customer"("account_num")
 CREATE INDEX "i_cust_child_home" ON "foodmart"."customer"("num_children_at_home")
@@ -94,106 +177,62 @@ CREATE INDEX "i_cust_postal_code" ON "foodmart"."customer"("postal_code")
 CREATE INDEX "i_cust_region_id" ON "foodmart"."customer"("customer_region_id")
 CREATE INDEX "i_customer_fname" ON "foodmart"."customer"("fname")
 CREATE INDEX "i_customer_lname" ON "foodmart"."customer"("lname")
-CREATE TEXT TABLE "foodmart"."days"("day" INTEGER NOT NULL,"week_day" VARCHAR(30) NOT NULL)
-SET TABLE "foodmart"."days" SOURCE '/csv/days.csv;ignore_first=true' DESC
-CREATE TEXT TABLE "foodmart"."department"("department_id" INTEGER NOT NULL,"department_description" VARCHAR(30) NOT NULL)
-SET TABLE "foodmart"."department" SOURCE '/csv/department.csv;ignore_first=true' DESC
 CREATE UNIQUE INDEX "i_department_id" ON "foodmart"."department"("department_id")
-CREATE TEXT TABLE "foodmart"."employee"("employee_id" INTEGER NOT NULL,"full_name" VARCHAR(30) NOT NULL,"first_name" VARCHAR(30) NOT NULL,"last_name" VARCHAR(30) NOT NULL,"position_id" INTEGER,"position_title" VARCHAR(30),"store_id" INTEGER NOT NULL,"department_id" INTEGER NOT NULL,"birth_date" DATE NOT NULL,"hire_date" TIMESTAMP,"end_date" TIMESTAMP,"salary" DECIMAL(10,4) NOT NULL,"supervisor_id" INTEGER,"education_level" VARCHAR(30) NOT NULL,"marital_status" VARCHAR(30) NOT NULL,"gender" VARCHAR(30) NOT NULL,"management_role" VARCHAR(30))
-SET TABLE "foodmart"."employee" SOURCE '/csv/employee.csv;ignore_first=true' DESC
 CREATE UNIQUE INDEX "i_employee_id" ON "foodmart"."employee"("employee_id")
 CREATE INDEX "i_empl_dept_id" ON "foodmart"."employee"("department_id")
 CREATE INDEX "i_empl_store_id" ON "foodmart"."employee"("store_id")
 CREATE INDEX "i_empl_super_id" ON "foodmart"."employee"("supervisor_id")
-CREATE TEXT TABLE "foodmart"."employee_closure"("employee_id" INTEGER NOT NULL,"supervisor_id" INTEGER NOT NULL,"distance" INTEGER)
-SET TABLE "foodmart"."employee_closure" SOURCE '/csv/employee_closure.csv;ignore_first=true' DESC
 CREATE UNIQUE INDEX "i_empl_closure" ON "foodmart"."employee_closure"("supervisor_id","employee_id")
 CREATE INDEX "i_empl_closure_emp" ON "foodmart"."employee_closure"("employee_id")
-CREATE TEXT TABLE "foodmart"."expense_fact"("store_id" INTEGER NOT NULL,"account_id" INTEGER NOT NULL,"exp_date" TIMESTAMP NOT NULL,"time_id" INTEGER NOT NULL,"category_id" VARCHAR(30) NOT NULL,"currency_id" INTEGER NOT NULL,"amount" DECIMAL(10,4) NOT NULL)
-SET TABLE "foodmart"."expense_fact" SOURCE '/csv/expense_fact.csv;ignore_first=true' DESC
 CREATE INDEX "i_expense_acct_id" ON "foodmart"."expense_fact"("account_id")
 CREATE INDEX "i_expense_store_id" ON "foodmart"."expense_fact"("store_id")
 CREATE INDEX "i_expense_time_id" ON "foodmart"."expense_fact"("time_id")
-CREATE TEXT TABLE "foodmart"."inventory_fact_1997"("product_id" INTEGER NOT NULL,"time_id" INTEGER,"warehouse_id" INTEGER,"store_id" INTEGER,"units_ordered" INTEGER,"units_shipped" INTEGER,"warehouse_sales" DECIMAL(10,4),"warehouse_cost" DECIMAL(10,4),"supply_time" SMALLINT,"store_invoice" DECIMAL(10,4))
-SET TABLE "foodmart"."inventory_fact_1997" SOURCE '/csv/inventory_fact_1997.csv;ignore_first=true' DESC
 CREATE INDEX "i_inv_97_prod_id" ON "foodmart"."inventory_fact_1997"("product_id")
 CREATE INDEX "i_inv_97_store_id" ON "foodmart"."inventory_fact_1997"("store_id")
 CREATE INDEX "i_inv_97_time_id" ON "foodmart"."inventory_fact_1997"("time_id")
 CREATE INDEX "i_inv_97_wrhse_id" ON "foodmart"."inventory_fact_1997"("warehouse_id")
-CREATE TEXT TABLE "foodmart"."inventory_fact_1998"("product_id" INTEGER NOT NULL,"time_id" INTEGER,"warehouse_id" INTEGER,"store_id" INTEGER,"units_ordered" INTEGER,"units_shipped" INTEGER,"warehouse_sales" DECIMAL(10,4),"warehouse_cost" DECIMAL(10,4),"supply_time" SMALLINT,"store_invoice" DECIMAL(10,4))
-SET TABLE "foodmart"."inventory_fact_1998" SOURCE '/csv/inventory_fact_1998.csv;ignore_first=true' DESC
 CREATE INDEX "i_inv_98_prod_id" ON "foodmart"."inventory_fact_1998"("product_id")
 CREATE INDEX "i_inv_98_store_id" ON "foodmart"."inventory_fact_1998"("store_id")
 CREATE INDEX "i_inv_98_time_id" ON "foodmart"."inventory_fact_1998"("time_id")
 CREATE INDEX "i_inv_98_wrhse_id" ON "foodmart"."inventory_fact_1998"("warehouse_id")
-CREATE TEXT TABLE "foodmart"."position"("position_id" INTEGER NOT NULL,"position_title" VARCHAR(30) NOT NULL,"pay_type" VARCHAR(30) NOT NULL,"min_scale" DECIMAL(10,4) NOT NULL,"max_scale" DECIMAL(10,4) NOT NULL,"management_role" VARCHAR(30) NOT NULL)
-SET TABLE "foodmart"."position" SOURCE '/csv/position.csv;ignore_first=true' DESC
 CREATE UNIQUE INDEX "i_position_id" ON "foodmart"."position"("position_id")
-CREATE TEXT TABLE "foodmart"."product"("product_class_id" INTEGER NOT NULL,"product_id" INTEGER NOT NULL,"brand_name" VARCHAR(60),"product_name" VARCHAR(60) NOT NULL,"SKU" BIGINT NOT NULL,"SRP" DECIMAL(10,4),"gross_weight" DOUBLE,"net_weight" DOUBLE,"recyclable_package" BOOLEAN,"low_fat" BOOLEAN,"units_per_case" SMALLINT,"cases_per_pallet" SMALLINT,"shelf_width" DOUBLE,"shelf_height" DOUBLE,"shelf_depth" DOUBLE)
-SET TABLE "foodmart"."product" SOURCE '/csv/product.csv;ignore_first=true' DESC
 CREATE UNIQUE INDEX "i_product_id" ON "foodmart"."product"("product_id")
 CREATE INDEX "i_prod_brand_name" ON "foodmart"."product"("brand_name")
 CREATE INDEX "i_prod_class_id" ON "foodmart"."product"("product_class_id")
 CREATE INDEX "i_product_SKU" ON "foodmart"."product"("SKU")
 CREATE INDEX "i_product_name" ON "foodmart"."product"("product_name")
-CREATE TEXT TABLE "foodmart"."product_class"("product_class_id" INTEGER NOT NULL,"product_subcategory" VARCHAR(30),"product_category" VARCHAR(30),"product_department" VARCHAR(30),"product_family" VARCHAR(30))
-SET TABLE "foodmart"."product_class" SOURCE '/csv/product_class.csv;ignore_first=true' DESC
-CREATE TEXT TABLE "foodmart"."promotion"("promotion_id" INTEGER NOT NULL,"promotion_district_id" INTEGER,"promotion_name" VARCHAR(30),"media_type" VARCHAR(30),"cost" DECIMAL(10,4),"start_date" TIMESTAMP,"end_date" TIMESTAMP)
-SET TABLE "foodmart"."promotion" SOURCE '/csv/promotion.csv;ignore_first=true' DESC
 CREATE UNIQUE INDEX "i_promotion_id" ON "foodmart"."promotion"("promotion_id")
 CREATE INDEX "i_promo_dist_id" ON "foodmart"."promotion"("promotion_district_id")
-CREATE TEXT TABLE "foodmart"."region"("region_id" INTEGER NOT NULL,"sales_city" VARCHAR(30),"sales_state_province" VARCHAR(30),"sales_district" VARCHAR(30),"sales_region" VARCHAR(30),"sales_country" VARCHAR(30),"sales_district_id" INTEGER)
-SET TABLE "foodmart"."region" SOURCE '/csv/region.csv;ignore_first=true' DESC
-CREATE TEXT TABLE "foodmart"."reserve_employee"("employee_id" INTEGER NOT NULL,"full_name" VARCHAR(30) NOT NULL,"first_name" VARCHAR(30) NOT NULL,"last_name" VARCHAR(30) NOT NULL,"position_id" INTEGER,"position_title" VARCHAR(30),"store_id" INTEGER NOT NULL,"department_id" INTEGER NOT NULL,"birth_date" TIMESTAMP NOT NULL,"hire_date" TIMESTAMP,"end_date" TIMESTAMP,"salary" DECIMAL(10,4) NOT NULL,"supervisor_id" INTEGER,"education_level" VARCHAR(30) NOT NULL,"marital_status" VARCHAR(30) NOT NULL,"gender" VARCHAR(30) NOT NULL)
-SET TABLE "foodmart"."reserve_employee" SOURCE '/csv/reserve_employee.csv;ignore_first=true' DESC
 CREATE UNIQUE INDEX "i_rsrv_empl_id" ON "foodmart"."reserve_employee"("employee_id")
 CREATE INDEX "i_rsrv_empl_dept" ON "foodmart"."reserve_employee"("department_id")
 CREATE INDEX "i_rsrv_empl_store" ON "foodmart"."reserve_employee"("store_id")
 CREATE INDEX "i_rsrv_empl_sup" ON "foodmart"."reserve_employee"("supervisor_id")
-CREATE TEXT TABLE "foodmart"."salary"("pay_date" TIMESTAMP NOT NULL,"employee_id" INTEGER NOT NULL,"department_id" INTEGER NOT NULL,"currency_id" INTEGER NOT NULL,"salary_paid" DECIMAL(10,4) NOT NULL,"overtime_paid" DECIMAL(10,4) NOT NULL,"vacation_accrued" DOUBLE NOT NULL,"vacation_used" DOUBLE NOT NULL)
-SET TABLE "foodmart"."salary" SOURCE '/csv/salary.csv;ignore_first=true' DESC
 CREATE INDEX "i_salary_employee" ON "foodmart"."salary"("employee_id")
 CREATE INDEX "i_salary_pay_date" ON "foodmart"."salary"("pay_date")
-CREATE TEXT TABLE "foodmart"."sales_fact_1997"("product_id" INTEGER NOT NULL,"time_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"promotion_id" INTEGER NOT NULL,"store_id" INTEGER NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL)
-SET TABLE "foodmart"."sales_fact_1997" SOURCE '/csv/sales_fact_1997.csv;ignore_first=true' DESC
 CREATE INDEX "i_sls_97_cust_id" ON "foodmart"."sales_fact_1997"("customer_id")
 CREATE INDEX "i_sls_97_prod_id" ON "foodmart"."sales_fact_1997"("product_id")
 CREATE INDEX "i_sls_97_promo_id" ON "foodmart"."sales_fact_1997"("promotion_id")
 CREATE INDEX "i_sls_97_store_id" ON "foodmart"."sales_fact_1997"("store_id")
 CREATE INDEX "i_sls_97_time_id" ON "foodmart"."sales_fact_1997"("time_id")
-CREATE TEXT TABLE "foodmart"."sales_fact_1998"("product_id" INTEGER NOT NULL,"time_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"promotion_id" INTEGER NOT NULL,"store_id" INTEGER NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL)
-SET TABLE "foodmart"."sales_fact_1998" SOURCE '/csv/sales_fact_1998.csv;ignore_first=true' DESC
 CREATE INDEX "i_sls_1998_prod_id" ON "foodmart"."sales_fact_1998"("product_id")
 CREATE INDEX "i_sls_1998_promo" ON "foodmart"."sales_fact_1998"("promotion_id")
 CREATE INDEX "i_sls_1998_store" ON "foodmart"."sales_fact_1998"("store_id")
 CREATE INDEX "i_sls_1998_time_id" ON "foodmart"."sales_fact_1998"("time_id")
 CREATE INDEX "i_sls_98_cust_id" ON "foodmart"."sales_fact_1998"("customer_id")
-CREATE TEXT TABLE "foodmart"."sales_fact_dec_1998"("product_id" INTEGER NOT NULL,"time_id" INTEGER NOT NULL,"customer_id" INTEGER NOT NULL,"promotion_id" INTEGER NOT NULL,"store_id" INTEGER NOT NULL,"store_sales" DECIMAL(10,4) NOT NULL,"store_cost" DECIMAL(10,4) NOT NULL,"unit_sales" DECIMAL(10,4) NOT NULL)
-SET TABLE "foodmart"."sales_fact_dec_1998" SOURCE '/csv/sales_fact_dec_1998.csv;ignore_first=true' DESC
 CREATE INDEX "i_sls_dec98_cust" ON "foodmart"."sales_fact_dec_1998"("customer_id")
 CREATE INDEX "i_sls_dec98_prod" ON "foodmart"."sales_fact_dec_1998"("product_id")
 CREATE INDEX "i_sls_dec98_promo" ON "foodmart"."sales_fact_dec_1998"("promotion_id")
 CREATE INDEX "i_sls_dec98_store" ON "foodmart"."sales_fact_dec_1998"("store_id")
 CREATE INDEX "i_sls_dec98_time" ON "foodmart"."sales_fact_dec_1998"("time_id")
-CREATE TEXT TABLE "foodmart"."store"("store_id" INTEGER NOT NULL,"store_type" VARCHAR(30),"region_id" INTEGER,"store_name" VARCHAR(30),"store_number" INTEGER,"store_street_address" VARCHAR(30),"store_city" VARCHAR(30),"store_state" VARCHAR(30),"store_postal_code" VARCHAR(30),"store_country" VARCHAR(30),"store_manager" VARCHAR(30),"store_phone" VARCHAR(30),"store_fax" VARCHAR(30),"first_opened_date" TIMESTAMP,"last_remodel_date" TIMESTAMP,"store_sqft" INTEGER,"grocery_sqft" INTEGER,"frozen_sqft" INTEGER,"meat_sqft" INTEGER,"coffee_bar" BOOLEAN,"video_store" BOOLEAN,"salad_bar" BOOLEAN,"prepared_food" BOOLEAN,"florist" BOOLEAN)
-SET TABLE "foodmart"."store" SOURCE '/csv/store.csv;ignore_first=true' DESC
 CREATE UNIQUE INDEX "i_store_id" ON "foodmart"."store"("store_id")
 CREATE INDEX "i_store_region_id" ON "foodmart"."store"("region_id")
-CREATE TEXT TABLE "foodmart"."store_ragged"("store_id" INTEGER NOT NULL,"store_type" VARCHAR(30),"region_id" INTEGER,"store_name" VARCHAR(30),"store_number" INTEGER,"store_street_address" VARCHAR(30),"store_city" VARCHAR(30),"store_state" VARCHAR(30),"store_postal_code" VARCHAR(30),"store_country" VARCHAR(30),"store_manager" VARCHAR(30),"store_phone" VARCHAR(30),"store_fax" VARCHAR(30),"first_opened_date" TIMESTAMP,"last_remodel_date" TIMESTAMP,"store_sqft" INTEGER,"grocery_sqft" INTEGER,"frozen_sqft" INTEGER,"meat_sqft" INTEGER,"coffee_bar" BOOLEAN,"video_store" BOOLEAN,"salad_bar" BOOLEAN,"prepared_food" BOOLEAN,"florist" BOOLEAN)
-SET TABLE "foodmart"."store_ragged" SOURCE '/csv/store_ragged.csv;ignore_first=true' DESC
 CREATE UNIQUE INDEX "i_store_raggd_id" ON "foodmart"."store_ragged"("store_id")
 CREATE INDEX "i_store_rggd_reg" ON "foodmart"."store_ragged"("region_id")
-CREATE TEXT TABLE "foodmart"."time_by_day"("time_id" INTEGER NOT NULL,"the_date" TIMESTAMP,"the_day" VARCHAR(30),"the_month" VARCHAR(30),"the_year" SMALLINT,"day_of_month" SMALLINT,"week_of_year" INTEGER,"month_of_year" SMALLINT,"quarter" VARCHAR(30),"fiscal_period" VARCHAR(30))
-SET TABLE "foodmart"."time_by_day" SOURCE '/csv/time_by_day.csv;ignore_first=true' DESC
 CREATE UNIQUE INDEX "i_time_day" ON "foodmart"."time_by_day"("the_date")
 CREATE UNIQUE INDEX "i_time_id" ON "foodmart"."time_by_day"("time_id")
 CREATE INDEX "i_time_month" ON "foodmart"."time_by_day"("month_of_year")
 CREATE INDEX "i_time_quarter" ON "foodmart"."time_by_day"("quarter")
 CREATE INDEX "i_time_year" ON "foodmart"."time_by_day"("the_year")
-CREATE TEXT TABLE "foodmart"."warehouse"("warehouse_id" INTEGER NOT NULL,"warehouse_class_id" INTEGER,"stores_id" INTEGER,"warehouse_name" VARCHAR(60),"wa_address1" VARCHAR(30),"wa_address2" VARCHAR(30),"wa_address3" VARCHAR(30),"wa_address4" VARCHAR(30),"warehouse_city" VARCHAR(30),"warehouse_state_province" VARCHAR(30),"warehouse_postal_code" VARCHAR(30),"warehouse_country" VARCHAR(30),"warehouse_owner_name" VARCHAR(30),"warehouse_phone" VARCHAR(30),"warehouse_fax" VARCHAR(30))
-SET TABLE "foodmart"."warehouse" SOURCE '/csv/warehouse.csv;ignore_first=true' DESC
-CREATE TEXT TABLE "foodmart"."warehouse_class"("warehouse_class_id" INTEGER NOT NULL,"description" VARCHAR(30))
-SET TABLE "foodmart"."warehouse_class" SOURCE '/csv/warehouse_class.csv;ignore_first=true' DESC
 ALTER SEQUENCE SYSTEM_LOBS.LOB_ID RESTART WITH 1
 SET DATABASE DEFAULT INITIAL SCHEMA "foodmart"
 GRANT USAGE ON DOMAIN INFORMATION_SCHEMA.YES_OR_NO TO PUBLIC

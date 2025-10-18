@@ -74,13 +74,18 @@ limitations under the License.
     <top.dir>${project.basedir}</top.dir>
 
     <!-- Versions in alphabetical order. -->
+    <build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
+    <git-commit-id-plugin.version>4.9.10</git-commit-id-plugin.version>
     <googleformatter-maven-plugin.version>1.7.5</googleformatter-maven-plugin.version>
-
-    <!-- We support HSQLDB versions 2.0.0 through 2.6.1;
-         2.5.1 is the default because it is the highest version
-         compatible with JDK 8; 2.6.0 and higher requires JDK 11. -->
+    <!-- We support (and test) HSQLDB as low as 2.3.0.
+         In JDK 8, you must add '-Dhsqldb.version=2.5.1' because
+         HSQLDB 2.6 and higher requires at least JDK 11. -->
     <hsqldb.version>2.7.4</hsqldb.version>
     <junit.version>4.13.2</junit.version>
+    <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+    <maven-enforcer-plugin.version>3.0.0</maven-enforcer-plugin.version>
+    <maven-release-plugin.version>2.4.2</maven-release-plugin.version>
+    <maven-scm-provider-gitexe.version>1.9.1</maven-scm-provider-gitexe.version>
   </properties>
 
   <!-- Environment settings. -->
@@ -103,10 +108,6 @@ limitations under the License.
     <url>scm:git:git://github.com/julianhyde/foodmart-data-hsqldb.git</url>
     <tag>HEAD</tag>
   </scm>
-
-  <prerequisites>
-    <maven>3.2.1</maven><!-- prerequisite of some plugins -->
-  </prerequisites>
 
   <dependencies>
     <dependency>
@@ -152,16 +153,52 @@ limitations under the License.
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>${maven-enforcer-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>enforce-maven</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>3.2.1</version>
+                </requireMavenVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin.version}</version>
         <configuration>
           <source>8</source>
           <target>8</target>
         </configuration>
       </plugin>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>${maven-release-plugin.version}</version>
+        <!-- If we don't specify gitexe version, git doesn't
+             commit during release process. -->
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.scm</groupId>
+            <artifactId>maven-scm-provider-gitexe</artifactId>
+            <version>${maven-scm-provider-gitexe.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-        <!-- Make sure every sub-project has LICENSE, NOTICE and
+        <version>${build-helper-maven-plugin.version}</version>
+        <!-- Make sure every subproject has LICENSE, NOTICE and
              git.properties in its jar's META-INF directory. -->
         <executions>
           <execution>
@@ -196,6 +233,7 @@ limitations under the License.
       <plugin>
         <groupId>pl.project13.maven</groupId>
         <artifactId>git-commit-id-plugin</artifactId>
+        <version>${git-commit-id-plugin.version}</version>
         <inherited>false</inherited>
         <executions>
           <execution>

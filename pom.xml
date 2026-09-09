@@ -85,6 +85,7 @@ limitations under the License.
     <junit.version>4.13.2</junit.version>
     <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
     <maven-enforcer-plugin.version>3.0.0</maven-enforcer-plugin.version>
+    <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
     <maven-release-plugin.version>2.4.2</maven-release-plugin.version>
     <maven-scm-provider-gitexe.version>1.9.1</maven-scm-provider-gitexe.version>
   </properties>
@@ -179,6 +180,21 @@ limitations under the License.
         <configuration>
           <source>8</source>
           <target>8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${maven-javadoc-plugin.version}</version>
+        <!-- This is the configuration used by "mvn javadoc:javadoc". It is
+             configured strict, so that it shows errors such as broken links in
+             javadoc on private methods. The configuration for "mvn site" is
+             under "reporting", and is more lenient. -->
+        <configuration>
+          <source>8</source>
+          <notimestamp>true</notimestamp>
+          <quiet>true</quiet>
+          <show>private</show>
         </configuration>
       </plugin>
       <plugin>

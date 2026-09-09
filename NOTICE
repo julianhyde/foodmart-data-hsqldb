@@ -2,10 +2,10 @@ foodmart-data-hsqldb
 Foodmart data set in hsqldb format
 
 Copyright (C) 2004-2005 Julian Hyde
-Copyright (C) 2015-2025 Julian Hyde
+Copyright (C) 2015-2026 Julian Hyde
 Copyright (C) 2005-2012 Pentaho
 All Rights Reserved.
 
 Based upon the Pentaho mondrian-data-foodmart artifact developed as
 part of the Pentaho Mondrian OLAP engine
-(http://mondrian.pentaho.org).
+(https://github.com/pentaho/mondrian).
